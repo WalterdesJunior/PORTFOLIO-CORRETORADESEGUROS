@@ -1,61 +1,67 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const homeLink = document.querySelector('a[href="#home"]');
-    const sobreLink = document.getElementById('sobre-link');
-    const servicosLink = document.querySelector('a[href="#servicos"]');
-    const contatoLink = document.querySelector('a[href="#contato"]');
-    const heroSection = document.getElementById('home');
-    const sobreSection = document.getElementById('sobre');
-    const servicosSection = document.getElementById('servicos');
-    const contatoSection = document.getElementById('contato');
-    const mobileMenuButton = document.querySelector('.mobile-menu-button');
+document.addEventListener('DOMContentLoaded', function () {
+    const pages = Array.from(document.querySelectorAll('.page'));
+    const navbar = document.querySelector('.navbar');
     const navLinks = document.querySelector('.nav-links');
-    const heroContactBtn = document.querySelector('.hero-content .cta-btn');
+    const menuButton = document.querySelector('.mobile-menu-button');
 
-    function hideAllSections() {
-        heroSection.style.display = 'none';
-        sobreSection.style.display = 'none';
-        servicosSection.style.display = 'none';
-        contatoSection.style.display = 'none';
+    function findPage(id) {
+        return pages.find(function (page) { return page.id === id; });
     }
 
-    function showSection(section) {
-        hideAllSections();
-        section.style.display = section === heroSection ? 'flex' : 'block';
-        window.scrollTo(0, 0);
+    function showPage(id) {
+        const target = findPage(id) || findPage('home');
+        pages.forEach(function (page) {
+            page.classList.toggle('is-active', page === target);
+        });
+        document.querySelectorAll('.nav-links a[href^="#"]').forEach(function (link) {
+            link.classList.toggle('is-current', link.hash === '#' + target.id);
+        });
+        document.body.dataset.page = target.id;
+        window.scrollTo({ top: 0, behavior: 'instant' });
     }
 
-    function closeMenu() {
-        navLinks.classList.remove('active');
+    function setMenu(open) {
+        navLinks.classList.toggle('active', open);
+        menuButton.classList.toggle('is-open', open);
+        menuButton.setAttribute('aria-expanded', String(open));
+        menuButton.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
     }
 
-    function handleNavClick(e, section) {
+    // Qualquer link interno (#home, #sobre, #servicos, #contato) troca de página
+    document.addEventListener('click', function (e) {
+        const link = e.target.closest('a[href^="#"]');
+        if (!link) return;
+
+        const page = findPage(link.hash.slice(1));
+        if (!page) return;
+
         e.preventDefault();
-        showSection(section);
-        closeMenu();
-    }
-
-    homeLink.addEventListener('click', (e) => handleNavClick(e, heroSection));
-    sobreLink.addEventListener('click', (e) => handleNavClick(e, sobreSection));
-    servicosLink.addEventListener('click', (e) => handleNavClick(e, servicosSection));
-    contatoLink.addEventListener('click', (e) => handleNavClick(e, contatoSection));
-
-    heroContactBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        showSection(contatoSection);
+        if (location.hash !== link.hash) {
+            history.pushState(null, '', link.hash);
+        }
+        showPage(page.id);
+        setMenu(false);
     });
 
-    mobileMenuButton.addEventListener('click', function() {
-        navLinks.classList.toggle('active');
+    window.addEventListener('popstate', function () {
+        showPage(location.hash.slice(1));
     });
 
-    document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', closeMenu);
+    menuButton.addEventListener('click', function () {
+        setMenu(!navLinks.classList.contains('active'));
     });
 
-    // Mostrar a seção inicial (home) por padrão
-    showSection(heroSection);
+    window.addEventListener('scroll', function () {
+        navbar.classList.toggle('is-scrolled', window.scrollY > 10);
+    }, { passive: true });
 
+    showPage(location.hash.slice(1));
+
+    // Ao abrir direto em #sobre, #servicos ou #contato o navegador rola até a seção
+    // depois do DOMContentLoaded; volta ao topo para o cabeçalho da página aparecer.
+    window.addEventListener('load', function () {
+        if (findPage(location.hash.slice(1))) {
+            window.scrollTo({ top: 0, behavior: 'instant' });
+        }
+    });
 });
-
-
-    

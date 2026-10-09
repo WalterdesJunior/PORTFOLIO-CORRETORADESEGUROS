@@ -4,212 +4,417 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Diele Melo - Corretora de Seguros</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <meta name="description" content="DM Corretora de Seguros, em Teresina-PI. Seguros de auto, residencial, vida, saúde, empresarial e rural com atendimento personalizado e as principais seguradoras do mercado.">
+    <meta name="theme-color" content="#0b0908">
+    <link rel="icon" href="img/logo-removebg-preview%20(1).png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-    <nav class="navbar">
+<body data-page="home">
+
+    <!-- Ícones (sprite). Uso: <svg class="icon"><use href="#i-nome"/></svg> -->
+    <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+        <symbol id="i-car" viewBox="0 0 24 24"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/></symbol>
+        <symbol id="i-house" viewBox="0 0 24 24"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></symbol>
+        <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+        <symbol id="i-heart-pulse" viewBox="0 0 24 24"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/><path d="M3.22 12H9.5l.5-1 2 4.5 2-7 1.5 3.5h5.27"/></symbol>
+        <symbol id="i-building" viewBox="0 0 24 24"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></symbol>
+        <symbol id="i-sprout" viewBox="0 0 24 24"><path d="M7 20h10"/><path d="M10 20c5.5-2.5.8-6.4 3-10"/><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/><path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/></symbol>
+        <symbol id="i-plane" viewBox="0 0 24 24"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></symbol>
+        <symbol id="i-key" viewBox="0 0 24 24"><path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z"/><circle cx="16.5" cy="7.5" r=".5" fill="currentColor"/></symbol>
+        <symbol id="i-trending" viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></symbol>
+        <symbol id="i-grid" viewBox="0 0 24 24"><rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/></symbol>
+        <symbol id="i-shield" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
+        <symbol id="i-star" viewBox="0 0 24 24"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z"/></symbol>
+        <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+        <symbol id="i-chat" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></symbol>
+        <symbol id="i-instagram" viewBox="0 0 24 24"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></symbol>
+        <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></symbol>
+        <symbol id="i-mail" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
+        <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+    </svg>
+
+    <header class="navbar">
         <div class="nav-content">
-            <div class="logo"> 
-                <div class="logo-text"><img src="img/logo-removebg-preview (1).png" alt="logo"></div>
-            </div>
-            <button class="mobile-menu-button">
+            <a href="#home" class="logo" aria-label="DM Corretora de Seguros - Início">
+                <span class="logo-mark" aria-hidden="true">DM</span>
+                <span class="logo-word"><strong>CORRETORA</strong><small>DE SEGUROS</small></span>
+            </a>
+            <button class="mobile-menu-button" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav-links">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
-            <div class="nav-links">
-                <a href="#home">Inicio</a>
-                <a href="#sobre" id="sobre-link">Sobre</a>
-                <a href="#servicos">Serviços</a>
-                <a href="#contato">Contato</a>
-            </div>
+            <nav class="nav-links" id="nav-links">
+                <div class="nav-menu">
+                    <a href="#home">Início</a>
+                    <a href="#servicos">Seguros</a>
+                    <a href="#sobre" id="sobre-link">Sobre Nós</a>
+                    <a href="#duvidas">Dúvidas</a>
+                    <a href="#contato">Contato</a>
+                </div>
+                <a href="https://wa.me/5586999246543" target="_blank" rel="noopener" class="nav-cta">
+                    <svg class="icon" aria-hidden="true"><use href="#i-chat"/></svg>
+                    Fale Conosco
+                </a>
+            </nav>
         </div>
-    </nav>
+    </header>
 
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1>Temos a chave do seu futuro!</h1>
-                <p>Proteção e tranquilidade para você e sua família. Conte com nossa experiência para encontrar o seguro ideal para suas necessidades.</p>
-                <a href="#contato" class="cta-btn" id="hero-contact-btn">Entre em Contato</a>
-            </div>
-            <div class="hero-image">
-                <img src="img/diele d.jpg" alt="Corretora de Seguros">
-            </div>
+    <main>
+
+        <!-- ============ HOME ============ -->
+        <div class="page is-active" id="home">
+
+            <section class="hero">
+                <div class="hero-media">
+                    <img src="img/dm%20corretora%20home.jpeg" alt="Diele Melo sorrindo em sua mesa no escritório da DM Corretora" fetchpriority="high">
+                </div>
+                <div class="container hero-inner">
+                    <div class="hero-copy">
+                        <span class="eyebrow">Seguros é com a gente</span>
+                        <h1>Seu futuro mais <em>seguro começa aqui.</em></h1>
+                        <p>Na DM Corretora de Seguros, você encontra as melhores opções de proteção, com atendimento personalizado, transparência e as principais seguradoras do mercado.</p>
+                        <div class="hero-actions">
+                            <a href="https://wa.me/5586999246543" target="_blank" rel="noopener" class="btn btn--gold" id="hero-contact-btn">
+                                <svg class="icon" aria-hidden="true"><use href="#i-chat"/></svg>
+                                Fale com um especialista
+                                <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+                            </a>
+                            <a href="#servicos" class="btn btn--ghost">
+                                Conheça nossos seguros
+                                <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="home-seguros">
+                <div class="container home-seguros__grid">
+                    <div class="home-seguros__intro">
+                        <span class="eyebrow">Nossos seguros</span>
+                        <h2>Proteção completa para <em>todas as fases da sua vida.</em></h2>
+                        <p>Trabalhamos com as principais seguradoras do mercado para oferecer soluções sob medida para você, sua família e o seu patrimônio.</p>
+                        <a href="#servicos" class="btn btn--ghost btn--sm">
+                            Ver todos os seguros
+                            <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+                        </a>
+                    </div>
+
+                    <!-- Para usar uma foto no card: style="--photo:url(img/seguros/auto.jpg)" no <a class="seg-card"> -->
+                    <div class="seg-grid">
+                        <a class="seg-card" href="#servicos">
+                            <div class="seg-card__media"><svg class="icon seg-card__bg" aria-hidden="true"><use href="#i-car"/></svg></div>
+                            <div class="seg-card__body">
+                                <span class="seg-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-car"/></svg></span>
+                                <div><h3>Auto</h3><p>Seu veículo protegido em todos os caminhos.</p></div>
+                                <svg class="icon seg-card__arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
+                            </div>
+                        </a>
+                        <a class="seg-card" href="#servicos">
+                            <div class="seg-card__media"><svg class="icon seg-card__bg" aria-hidden="true"><use href="#i-house"/></svg></div>
+                            <div class="seg-card__body">
+                                <span class="seg-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-house"/></svg></span>
+                                <div><h3>Residencial</h3><p>Mais segurança para o seu lar.</p></div>
+                                <svg class="icon seg-card__arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
+                            </div>
+                        </a>
+                        <a class="seg-card" href="#servicos">
+                            <div class="seg-card__media"><svg class="icon seg-card__bg" aria-hidden="true"><use href="#i-users"/></svg></div>
+                            <div class="seg-card__body">
+                                <span class="seg-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-users"/></svg></span>
+                                <div><h3>Vida</h3><p>Cuidado com quem você ama.</p></div>
+                                <svg class="icon seg-card__arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
+                            </div>
+                        </a>
+                        <a class="seg-card" href="#servicos">
+                            <div class="seg-card__media"><svg class="icon seg-card__bg" aria-hidden="true"><use href="#i-heart-pulse"/></svg></div>
+                            <div class="seg-card__body">
+                                <span class="seg-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-heart-pulse"/></svg></span>
+                                <div><h3>Saúde</h3><p>Seu bem-estar em primeiro lugar.</p></div>
+                                <svg class="icon seg-card__arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
+                            </div>
+                        </a>
+                        <a class="seg-card" href="#servicos">
+                            <div class="seg-card__media"><svg class="icon seg-card__bg" aria-hidden="true"><use href="#i-building"/></svg></div>
+                            <div class="seg-card__body">
+                                <span class="seg-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-building"/></svg></span>
+                                <div><h3>Empresarial</h3><p>Proteção para o seu negócio crescer.</p></div>
+                                <svg class="icon seg-card__arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
+                            </div>
+                        </a>
+                        <a class="seg-card" href="#servicos">
+                            <div class="seg-card__media"><svg class="icon seg-card__bg" aria-hidden="true"><use href="#i-sprout"/></svg></div>
+                            <div class="seg-card__body">
+                                <span class="seg-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-sprout"/></svg></span>
+                                <div><h3>Rural</h3><p>O campo também precisa de proteção.</p></div>
+                                <svg class="icon seg-card__arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="home-why">
+                <div class="container home-why__grid">
+                    <div class="home-why__copy">
+                        <span class="eyebrow">Por que escolher a DM Corretora</span>
+                        <h2>Mais do que seguros, <em>parceiros para o seu futuro.</em></h2>
+                    </div>
+                    <ul class="stats">
+                        <li>
+                            <svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg>
+                            <div><strong>+10</strong><span>anos de experiência</span></div>
+                        </li>
+                        <li>
+                            <svg class="icon" aria-hidden="true"><use href="#i-users"/></svg>
+                            <div><strong>+5 mil</strong><span>clientes atendidos</span></div>
+                        </li>
+                        <li>
+                            <svg class="icon" aria-hidden="true"><use href="#i-star"/></svg>
+                            <div><strong>98%</strong><span>de satisfação</span></div>
+                        </li>
+                    </ul>
+                    <a href="#contato" class="btn btn--ghost home-why__cta">
+                        Fale Conosco
+                        <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+                    </a>
+                </div>
+            </section>
         </div>
-    </section>
+
+        <!-- ============ SOBRE ============ -->
+        <section class="page about-section" id="sobre">
+            <div class="container">
+                <header class="page-head">
+                    <span class="eyebrow">Quem somos</span>
+                    <h2 class="section-title">Sobre <em>Nós</em></h2>
+                </header>
+                <div class="about-content">
+                    <div class="about-image">
+                        <img src="img/diele d.jpg" alt="Diele Melo, corretora de seguros">
+                    </div>
+                    <div class="about-details">
+                        <div class="about-description">
+                            <p>A <strong>DM Corretora de Seguros</strong> é uma empresa especializada em proteção e segurança para pessoas e patrimônios. Com experiência no mercado, nos destacamos pelo atendimento personalizado e soluções sob medida para cada cliente.</p>
+                            <p>Nossa missão é proporcionar tranquilidade e segurança através de um atendimento humanizado e profissional, sempre buscando as melhores condições e benefícios para nossos segurados.</p>
+                        </div>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <span class="info-label">Localização</span>
+                                <span class="info-value">Teresina, PI</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">SUSEP</span>
+                                <span class="info-value">242157783</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Telefone</span>
+                                <span class="info-value"><a href="tel:+5586999246543">(86) 9 9924-6543</a></span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Email</span>
+                                <span class="info-value"><a href="mailto:dmcorretoradeseg@gmail.com">dmcorretoradeseg@gmail.com</a></span>
+                            </div>
+                        </div>
+                        <a href="https://wa.me/5586999246543" target="_blank" rel="noopener" class="btn btn--gold">
+                            <svg class="icon" aria-hidden="true"><use href="#i-chat"/></svg>
+                            Fale com um especialista
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ SERVIÇOS ============ -->
+        <section class="page services-section" id="servicos">
+            <div class="container">
+                <header class="page-head">
+                    <span class="eyebrow">Soluções sob medida</span>
+                    <h2 class="section-title">Nossos <em>Seguros</em></h2>
+                </header>
+                <div class="services-grid">
+                    <article class="service-card">
+                        <span class="service-icon"><svg class="icon" aria-hidden="true"><use href="#i-users"/></svg></span>
+                        <h3>Seguro de Vida</h3>
+                        <p>Proteção financeira para você e sua família, garantindo tranquilidade em momentos difíceis.</p>
+                        <a class="service-link" href="https://wa.me/5586999246543?text=Ol%C3%A1!%20Gostaria%20de%20uma%20cota%C3%A7%C3%A3o%20de%20Seguro%20de%20Vida." target="_blank" rel="noopener">Solicitar cotação <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+                    </article>
+                    <article class="service-card">
+                        <span class="service-icon"><svg class="icon" aria-hidden="true"><use href="#i-house"/></svg></span>
+                        <h3>Seguro Residencial</h3>
+                        <p>Proteja seu lar contra imprevistos, incluindo roubo, incêndio e danos naturais.</p>
+                        <a class="service-link" href="https://wa.me/5586999246543?text=Ol%C3%A1!%20Gostaria%20de%20uma%20cota%C3%A7%C3%A3o%20de%20Seguro%20Residencial." target="_blank" rel="noopener">Solicitar cotação <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+                    </article>
+                    <article class="service-card">
+                        <span class="service-icon"><svg class="icon" aria-hidden="true"><use href="#i-car"/></svg></span>
+                        <h3>Seguro Auto Individual e Frota</h3>
+                        <p>Cobertura completa para seu veículo com as melhores condições do mercado.</p>
+                        <a class="service-link" href="https://wa.me/5586999246543?text=Ol%C3%A1!%20Gostaria%20de%20uma%20cota%C3%A7%C3%A3o%20de%20Seguro%20Auto." target="_blank" rel="noopener">Solicitar cotação <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+                    </article>
+                    <article class="service-card">
+                        <span class="service-icon"><svg class="icon" aria-hidden="true"><use href="#i-plane"/></svg></span>
+                        <h3>Seguro Viagem</h3>
+                        <p>Viaje com tranquilidade, sabendo que está protegido contra imprevistos no exterior.</p>
+                        <a class="service-link" href="https://wa.me/5586999246543?text=Ol%C3%A1!%20Gostaria%20de%20uma%20cota%C3%A7%C3%A3o%20de%20Seguro%20Viagem." target="_blank" rel="noopener">Solicitar cotação <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+                    </article>
+                    <article class="service-card">
+                        <span class="service-icon"><svg class="icon" aria-hidden="true"><use href="#i-building"/></svg></span>
+                        <h3>Seguro Empresarial</h3>
+                        <p>Soluções completas para proteger seu negócio e patrimônio empresarial.</p>
+                        <a class="service-link" href="https://wa.me/5586999246543?text=Ol%C3%A1!%20Gostaria%20de%20uma%20cota%C3%A7%C3%A3o%20de%20Seguro%20Empresarial." target="_blank" rel="noopener">Solicitar cotação <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+                    </article>
+                    <article class="service-card">
+                        <span class="service-icon"><svg class="icon" aria-hidden="true"><use href="#i-sprout"/></svg></span>
+                        <h3>Seguro Rural</h3>
+                        <p>O campo também precisa de proteção: cuidamos da sua produção, máquinas e patrimônio rural.</p>
+                        <a class="service-link" href="https://wa.me/5586999246543?text=Ol%C3%A1!%20Gostaria%20de%20uma%20cota%C3%A7%C3%A3o%20de%20Seguro%20Rural." target="_blank" rel="noopener">Solicitar cotação <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+                    </article>
+                    <article class="service-card">
+                        <span class="service-icon"><svg class="icon" aria-hidden="true"><use href="#i-heart-pulse"/></svg></span>
+                        <h3>Plano de Saúde</h3>
+                        <p>Cuidados médicos de qualidade para você e sua família com ampla rede credenciada.</p>
+                        <a class="service-link" href="https://wa.me/5586999246543?text=Ol%C3%A1!%20Gostaria%20de%20uma%20cota%C3%A7%C3%A3o%20de%20Plano%20de%20Sa%C3%BAde." target="_blank" rel="noopener">Solicitar cotação <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+                    </article>
+                    <article class="service-card">
+                        <span class="service-icon"><svg class="icon" aria-hidden="true"><use href="#i-key"/></svg></span>
+                        <h3>Consórcio</h3>
+                        <p>Planejamento financeiro inteligente para realizar seus objetivos.</p>
+                        <a class="service-link" href="https://wa.me/5586999246543?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20Cons%C3%B3rcio." target="_blank" rel="noopener">Saiba mais <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+                    </article>
+                    <article class="service-card">
+                        <span class="service-icon"><svg class="icon" aria-hidden="true"><use href="#i-trending"/></svg></span>
+                        <h3>Previdência Privada</h3>
+                        <p>Planeje seu futuro financeiro com soluções personalizadas de previdência privada.</p>
+                        <a class="service-link" href="https://wa.me/5586999246543?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20Previd%C3%AAncia%20Privada." target="_blank" rel="noopener">Saiba mais <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+                    </article>
+                    <article class="service-card service-card--wide">
+                        <span class="service-icon"><svg class="icon" aria-hidden="true"><use href="#i-grid"/></svg></span>
+                        <h3>Entre Outros Ramos</h3>
+                        <p>Descubra nossa variedade de soluções em seguros e proteja o que é mais importante para você. Entre em contato para saber mais sobre nossos outros serviços personalizados.</p>
+                        <a class="service-link" href="#contato">Falar com a corretora <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ DÚVIDAS ============ -->
+        <section class="page faq-section" id="duvidas">
+            <div class="container">
+                <header class="page-head">
+                    <span class="eyebrow">Tire suas dúvidas</span>
+                    <h2 class="section-title">Dúvidas <em>Frequentes</em></h2>
+                </header>
+                <div class="faq-list">
+                    <details class="faq-item">
+                        <summary>O que faz uma corretora de seguros?</summary>
+                        <p>A corretora faz a ponte entre você e as seguradoras: entende o que você precisa proteger, compara opções e coberturas, ajuda na contratação e acompanha você nas renovações e em caso de sinistro.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Contratar por meio da corretora custa mais?</summary>
+                        <p>Em geral, não. A comissão da corretora já faz parte do valor do seguro, então você conta com atendimento especializado sem pagar uma taxa de serviço à parte.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Como faço para pedir uma cotação?</summary>
+                        <p>É só chamar pelo WhatsApp ou preencher o formulário da página de contato, informando o tipo de seguro que deseja. Com alguns dados básicos, retornamos com as melhores opções para o seu perfil.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>Com quais seguradoras vocês trabalham?</summary>
+                        <p>Trabalhamos com as principais seguradoras do mercado. Fale com a gente para saber qual delas atende melhor o seu caso.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>O que devo fazer em caso de sinistro?</summary>
+                        <p>Entre em contato com a corretora o quanto antes. Nós orientamos você sobre os documentos e os próximos passos e acompanhamos o processo junto à seguradora.</p>
+                    </details>
+                </div>
+                <div class="faq-cta">
+                    <p>Não encontrou o que procurava?</p>
+                    <a href="https://wa.me/5586999246543" target="_blank" rel="noopener" class="btn btn--gold">
+                        <svg class="icon" aria-hidden="true"><use href="#i-chat"/></svg>
+                        Fale com um especialista
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ CONTATO ============ -->
+        <section class="page contato-section" id="contato">
+            <div class="container">
+                <header class="page-head">
+                    <span class="eyebrow">Estou à sua disposição</span>
+                    <h2 class="section-title">Entre em <em>Contato</em></h2>
+                    <p class="page-lead">Tem alguma dúvida? Fale com a gente pelo canal que preferir.</p>
+                </header>
+
+                <div class="info-icons">
+                    <a href="https://wa.me/5586999246543" target="_blank" rel="noopener" class="icon-item">
+                        <span class="contact-icon"><svg class="icon" aria-hidden="true"><use href="#i-chat"/></svg></span>
+                        <div class="contact-text">
+                            <h4>WhatsApp</h4>
+                            <p>(86) 9 9924-6543</p>
+                        </div>
+                    </a>
+                    <a href="https://www.google.com/maps/search/Teresina,+PI" target="_blank" rel="noopener" class="icon-item">
+                        <span class="contact-icon"><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg></span>
+                        <div class="contact-text">
+                            <h4>Localização</h4>
+                            <p>Teresina, PI</p>
+                        </div>
+                    </a>
+                    <a href="mailto:dmcorretoradeseg@gmail.com" class="icon-item">
+                        <span class="contact-icon"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg></span>
+                        <div class="contact-text">
+                            <h4>Email</h4>
+                            <p>dmcorretoradeseg@gmail.com</p>
+                        </div>
+                    </a>
+                    <a href="https://www.instagram.com/dmcorretoradeseguros_/" target="_blank" rel="noopener" class="icon-item">
+                        <span class="contact-icon"><svg class="icon" aria-hidden="true"><use href="#i-instagram"/></svg></span>
+                        <div class="contact-text">
+                            <h4>Instagram</h4>
+                            <p>@dmcorretoradedeseguros</p>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="formulario-container">
+                    <h3 class="titulo-formulario">Envie uma mensagem</h3>
+                    <p class="descricao-formulario">Responderei o mais breve possível.</p>
+
+                    <form action="https://formsubmit.co/dmcorretoradeseg@gmail.com" method="POST" id="formulario-contato" class="formulario">
+                        <div class="form-row">
+                            <input type="text" name="nome" id="nome" placeholder="Seu Nome" aria-label="Seu nome" required>
+                            <input type="text" name="Contato" id="email" placeholder="Seu Contato" aria-label="Seu contato" required>
+                        </div>
+                        <input type="text" name="assunto" id="assunto" placeholder="Assunto" aria-label="Assunto" required>
+                        <textarea name="mensagem" id="mensagem" placeholder="Sua Mensagem" aria-label="Sua mensagem" required></textarea>
+                        <button type="submit" class="btn btn--gold btn-enviar">Enviar Mensagem</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-inner">
+            <a href="#home" class="logo footer-logo" aria-label="DM Corretora de Seguros - Início">
+                <span class="logo-mark" aria-hidden="true">DM</span>
+                <span class="logo-word"><strong>CORRETORA</strong><small>DE SEGUROS</small></span>
+            </a>
+            <p>DM Corretora de Seguros &middot; SUSEP 242157783 &middot; Teresina, PI</p>
+        </div>
+    </footer>
 
     <div class="social-links">
-        <a href="https://instagram.com/dmcorretoradedeseguros" target="logo">
-            <i class="fab fa-instagram"></i>
+        <a href="https://instagram.com/dmcorretoradedeseguros" target="_blank" rel="noopener" aria-label="Instagram da DM Corretora">
+            <svg class="icon" aria-hidden="true"><use href="#i-instagram"/></svg>
         </a>
     </div>
-    
-    <section class="about-section" id="sobre">
-        <h2 class="section-title">Sobre Nós</h2>
-        <div class="about-content">
-            <div class="about-image">
-                <img src="img/logo.PNG" alt="DM Corretora de Seguros">
-            </div>
-            <div class="about-details">
-                <div class="info-grid">
-                    <div class="info-item">
-                        <span class="info-label">Localização</span>
-                        <span class="info-value">TERESINA, PI</span>
-                    </div>
-                    <div class="info-item">
-                        <span class="info-label">Email</span>
-                        <span class="info-value">
-                            <a href="mailto:dmcorretoradeseg@gmail.com">dmcorretoradeseg@gmail.com</a>
-                        </span>
-                    </div>
-                    <div class="info-item">
-                        <span class="info-label">Telefone</span>
-                        <span class="info-value">
-                            <a href="tel:+5586999246543">(86) 9 9924-6543</a>
-                        </span>
-                    </div>
-                    <div class="info-item">
-                      <span class="info-label">SUSEP</span>
-                        <span class="info-value">242157783</span>
-                    </div>          
-                </div>
-                <div class="about-description">
-                    <p>A <strong>DM Corretora de Seguros</strong> é uma empresa especializada em proteção e segurança para pessoas e patrimônios. Com experiência no mercado, nos destacamos pelo atendimento personalizado e soluções sob medida para cada cliente.</p>
-                    <p>Nossa missão é proporcionar tranquilidade e segurança através de um atendimento humanizado e profissional, sempre buscando as melhores condições e benefícios para nossos segurados.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="services-section" id="servicos">
-        <h2 class="section-title">Nossos Serviços</h2>
-        <div class="services-grid">
-            <div class="service-card">
-                <div class="service-icon" >
-                    <img src="img/coracao.png" alt="heart">
-                </div>
-                <h3>Seguro de Vida</h3>
-                <p>Proteção financeira para você e sua família, garantindo tranquilidade em momentos difíceis.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">
-                    <img src="img/casa-limpa.png" alt="house">
-                </div>
-                <h3>Seguro Residencial</h3>
-                <p>Proteja seu lar contra imprevistos, incluindo roubo, incêndio e danos naturais.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">
-                    <img src="img/carro.png" alt="house">
-                </div>
-                <h3>Seguro Auto Individual e Frota</h3>
-                <p>Cobertura completa para seu veículo com as melhores condições do mercado.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">
-                    <img src="img/viagem.png" alt="Plano de saude">
-                </div>
-                <h3>Seguro Viagem</h3>
-                <p>
-                    Viaje com tranquilidade, sabendo que está protegido contra imprevistos no exterior.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">
-                    <img src="img/seguro-empresarial.png" alt="Seguro Empresarial">
-                </div>
-                <h3>Seguro Empresarial</h3>
-                <p>Soluções completas para proteger seu negócio e patrimônio empresarial.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">
-                    <img src="img/consorcio.png" alt="Consorcio">
-                </div>
-                <h3>Consórcio</h3>
-                <p>Planejamento financeiro inteligente para realizar seus objetivos.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">
-                    <img src="img/plano-de-saude.png" alt="Ícone animado de Seguro Viagem">
-                </div>
-                <h3>Plano de Saude</h3>
-                <p>Cuidados médicos de qualidade para você e sua família com ampla rede credenciada.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">
-                    <img src="img/moeda-de-dolar.png" alt="Ícone animado de Previdência Privada">
-                </div>
-                <h3>Previdência Privada</h3>
-                <p>Planeje seu futuro financeiro com soluções personalizadas de previdência privada.</p>
-            </div>
-           <div class="service-card">
-            <div class="service-icon">
-              <img src="img/Animation - 1732848143356.gif" alt="outros">
-            </div>
-             <h3>Entre Outros Ramos</h3>
-              <p>Descubra nossa variedade de soluções em seguros e proteja o que é mais importante para você. Entre em contato para saber mais sobre nossos outros serviços personalizados.</p>
-           </div>
-        </div>
-        </div>
-    </section>
-    <section class="contato-section" id="contato">
-        <div class="container">
-            <h2 class="titulo-contato">Entre em Contato</h2>
-            <h3 class="subtitulo-contato">Tem Alguma Dúvida?</h3>
-            <p class="descricao-servico">ESTOU À SUA DISPOSIÇÃO</p>
-    
-            <div class="info-icons">
-                <a href="https://wa.me/5586999246543" target="blank" class="icon-item">
-                    <img src="img/phone.png" alt="WhatsApp" class="contact-icon">
-                    <div class="contact-text">
-                        <h4>WhatsApp</h4>
-                        <p>(86) 9 9924-6543</p>
-                    </div>
-                </a>
-                
-                <a href="https://www.google.com/maps/search/Teresina,+PI" target="blank" class="icon-item">
-                    <img src="img/pin.png" alt="Localização" class="contact-icon">
-                    <div class="contact-text">
-                        <h4>Localização</h4>
-                        <p>Teresina, PI</p>
-                    </div>
-                </a>
-                
-                <a href="mailto:dmcorretoradeseg@gmail.com" class="icon-item">
-                    <img src="img/email.png" alt="Email" class="contact-icon">
-                    <div class="contact-text">
-                        <h4>Email</h4>
-                        <p>dmcorretoradeseg@gmail.com</p>
-                    </div>
-                </a>
-                
-                <a href="https://www.instagram.com/dmcorretoradeseguros_/" target="blank" class="icon-item">
-                    <img src="img/instagram.png" alt="Instagram" class="contact-icon">
-                    <div class="contact-text">
-                        <h4>Instagram</h4>
-                        <p>@dmcorretoradedeseguros</p>
-                    </div>
-                </a>
-            </div>
-    
-            <div class="formulario-container">
-                <h3 class="titulo-formulario">ENVIE UMA MENSAGEM</h3>
-                <p class="descricao-formulario">Responderei o mais breve possível</p>
-                
-             <form action="https://formsubmit.co/dmcorretoradeseg@gmail.com" method="POST" id="formulario-contato" class="formulario">
-    <div class="form-row">
-        <input type="text" name="nome" id="nome" placeholder="Seu Nome" required>
-        <input type="text" name="Contato" id="email" placeholder="Seu Contato" required>
-    </div>
-    <input type="text" name="assunto" id="assunto" placeholder="Assunto" required>
-    <textarea name="mensagem" id="mensagem" placeholder="Sua Mensagem" required></textarea>
-    <button type="submit" class="btn-enviar">Enviar Mensagem</button>
-</form>
-            </div>
-        </div>
-    </section>
-    <script src="https://kit.fontawesome.com/your-fontawesome-kit.js"></script>
+
     <script src="script.js"></script>
 </body>
 </html>
-
