@@ -55,6 +55,8 @@ document.addEventListener('DOMContentLoaded', function () {
         navbar.classList.toggle('is-scrolled', window.scrollY > 10);
     }, { passive: true });
 
+    initContactForm();
+
     showPage(location.hash.slice(1));
 
     // Ao abrir direto em #sobre, #servicos ou #contato o navegador rola até a seção
@@ -65,3 +67,53 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
+
+// Formulário de contato: ao enviar, abre o WhatsApp com a mensagem já pronta
+// (o visitante só confirma o envio por lá) e, em paralelo, manda uma cópia
+// por e-mail como registro. Se o e-mail falhar, o WhatsApp já foi aberto mesmo assim.
+function initContactForm() {
+    var WHATSAPP_NUMBER = '5586999246543';
+    var form = document.getElementById('formulario-contato');
+    if (!form) return;
+
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        var nome = form.nome.value.trim();
+        var contato = form.Contato.value.trim();
+        var assunto = form.assunto.value.trim();
+        var mensagem = form.mensagem.value.trim();
+
+        var texto =
+            'Olá! Vim pelo site da DM Corretora.\n\n' +
+            '*Nome:* ' + nome + '\n' +
+            '*Contato:* ' + contato + '\n' +
+            '*Assunto:* ' + assunto + '\n' +
+            '*Mensagem:* ' + mensagem;
+
+        var waUrl = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(texto);
+
+        // Precisa ser chamado de forma síncrona aqui dentro do clique, senão o
+        // navegador trata como pop-up indesejado e bloqueia a abertura.
+        window.open(waUrl, '_blank', 'noopener');
+
+        // Cópia por e-mail em segundo plano (best-effort: não atrasa nem bloqueia o WhatsApp).
+        fetch('https://formsubmit.co/ajax/dmcorretoradeseg@gmail.com', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+            body: JSON.stringify({
+                nome: nome,
+                Contato: contato,
+                assunto: assunto,
+                mensagem: mensagem,
+                _subject: 'Novo contato pelo site - DM Corretora'
+            })
+        }).catch(function () {
+            // Sem problema se falhar: o WhatsApp já foi aberto com a mensagem.
+        });
+
+        var status = document.getElementById('formulario-status');
+        if (status) status.hidden = false;
+        form.reset();
+    });
+}

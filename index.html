@@ -384,6 +384,10 @@
                     <h3 class="titulo-formulario">Envie uma mensagem</h3>
                     <p class="descricao-formulario">Responderei o mais breve possível.</p>
 
+                    <!-- Ao enviar, o script.js abre o WhatsApp com a mensagem pronta (ação que o
+                         WhatsApp exige ser confirmada pela pessoa) e manda uma cópia por e-mail em
+                         segundo plano. O action/method abaixo são só um reforço: se o JavaScript
+                         falhar, o formulário ainda envia por e-mail normalmente. -->
                     <form action="https://formsubmit.co/dmcorretoradeseg@gmail.com" method="POST" id="formulario-contato" class="formulario">
                         <div class="form-row">
                             <input type="text" name="nome" id="nome" placeholder="Seu Nome" aria-label="Seu nome" required>
@@ -392,6 +396,8 @@
                         <input type="text" name="assunto" id="assunto" placeholder="Assunto" aria-label="Assunto" required>
                         <textarea name="mensagem" id="mensagem" placeholder="Sua Mensagem" aria-label="Sua mensagem" required></textarea>
                         <button type="submit" class="btn btn--gold btn-enviar">Enviar Mensagem</button>
+                        <p class="formulario-nota">Ao enviar, abrimos o WhatsApp com sua mensagem pronta — é só confirmar o envio por lá.</p>
+                        <p class="formulario-status" id="formulario-status" role="status" hidden>WhatsApp aberto numa nova aba. Também guardamos uma cópia por e-mail.</p>
                     </form>
                 </div>
             </div>

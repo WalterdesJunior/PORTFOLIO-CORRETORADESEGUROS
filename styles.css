@@ -1154,6 +1154,27 @@ body:not([data-page='home']) .navbar {
     text-transform: uppercase;
 }
 
+.formulario-nota {
+    margin-top: -0.4rem;
+    text-align: center;
+    font-size: 0.78rem;
+    color: var(--muted);
+}
+
+.formulario-status {
+    align-self: center;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: -0.2rem;
+    padding: 0.6rem 1rem;
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    font-size: 0.82rem;
+    color: var(--gold-soft);
+    background: rgba(201, 164, 106, 0.08);
+}
+
 /* --------------------------------------------------------------------------
    Rodapé e link social flutuante
    -------------------------------------------------------------------------- */
