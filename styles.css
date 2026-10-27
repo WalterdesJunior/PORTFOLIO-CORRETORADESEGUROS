@@ -530,7 +530,7 @@ body:not([data-page='home']) .navbar {
     position: relative;
     display: grid;
     place-items: center;
-    height: 110px;
+    height: 150px;
     background-color: #17110c;
     background-image:
         var(--photo, none),
@@ -544,7 +544,7 @@ body:not([data-page='home']) .navbar {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(0deg, var(--bg-3) 0%, rgba(23, 19, 16, 0) 70%);
+    background: linear-gradient(0deg, var(--bg-3) 0%, rgba(23, 19, 16, 0) 45%);
 }
 
 .seg-card__bg {
@@ -585,9 +585,12 @@ body:not([data-page='home']) .navbar {
     flex: none;
     width: 38px;
     height: 38px;
+    margin-top: -30px;
     border: 1px solid var(--line-strong);
     border-radius: 50%;
     color: var(--gold-soft);
+    background: var(--bg-3);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
 }
 
 .seg-card__icon .icon {
@@ -1458,7 +1461,7 @@ body:not([data-page='home']) .navbar {
     }
 
     .seg-card__media {
-        height: 80px;
+        height: 120px;
     }
 
     .seg-card__bg {
