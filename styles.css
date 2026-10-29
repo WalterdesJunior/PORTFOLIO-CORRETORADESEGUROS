@@ -752,6 +752,39 @@ body:not([data-page='home']) .navbar {
     border-bottom-right-radius: 8px;
 }
 
+.about-badge {
+    position: absolute;
+    left: 24px;
+    bottom: -22px;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.85rem 1.2rem;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius);
+    background: var(--bg-2);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.5);
+}
+
+.about-badge .icon {
+    width: 26px;
+    height: 26px;
+    color: var(--gold);
+    flex: none;
+}
+
+.about-badge strong {
+    display: block;
+    font-family: var(--font-serif);
+    font-size: 1.05rem;
+    line-height: 1.2;
+}
+
+.about-badge span {
+    font-size: 0.74rem;
+    color: var(--muted);
+}
+
 .about-description p {
     margin-bottom: 1.1rem;
     font-weight: 300;
@@ -761,6 +794,31 @@ body:not([data-page='home']) .navbar {
 .about-description strong {
     font-weight: 500;
     color: var(--gold-soft);
+}
+
+.about-highlights {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    margin: 1.6rem 0;
+}
+
+.about-highlights li {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    font-size: 0.92rem;
+    color: var(--text);
+}
+
+.about-highlights .icon {
+    width: 18px;
+    height: 18px;
+    flex: none;
+    padding: 3px;
+    border-radius: 50%;
+    color: var(--gold);
+    background: rgba(201, 164, 106, 0.12);
 }
 
 .info-grid {
