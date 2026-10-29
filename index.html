@@ -34,6 +34,8 @@
         <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></symbol>
         <symbol id="i-mail" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
         <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+        <symbol id="i-briefcase" viewBox="0 0 24 24"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><rect width="20" height="14" x="2" y="6" rx="2"/></symbol>
+        <symbol id="i-shield-plus" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="M9 12h6"/><path d="M12 9v6"/></symbol>
         <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
     </svg>
 
@@ -94,66 +96,69 @@
             </section>
 
             <section class="home-seguros">
-                <div class="container home-seguros__grid">
+                <div class="container">
                     <div class="home-seguros__intro">
-                        <span class="eyebrow">Tipos de seguros</span>
-                        <h2>Encontre o seguro <em>ideal para você.</em></h2>
-                        <p>Temos as melhores opções de proteção, com atendimento personalizado e as principais seguradoras do mercado.</p>
-                        <a href="#contato" class="btn btn--ghost btn--sm">
-                            Solicitar Orçamento
-                            <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
-                        </a>
+                        <div>
+                            <span class="eyebrow">Tipos de seguros</span>
+                            <h2>Encontre o seguro <em>ideal para você.</em></h2>
+                        </div>
+                        <div class="home-seguros__aside">
+                            <p>Temos as melhores opções de proteção, com atendimento personalizado e as principais seguradoras do mercado.</p>
+                            <a href="#contato" class="btn btn--ghost btn--sm">
+                                Solicitar Orçamento
+                                <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+                            </a>
+                        </div>
                     </div>
 
-                    <!-- Para usar uma foto no card: style="--photo:url(img/seguros/auto.jpg)" no <a class="seg-card"> -->
                     <div class="seg-grid">
                         <a class="seg-card" href="#servicos" style="--photo:url(img/seguros/auto.jpg)">
-                            <div class="seg-card__media"><svg class="icon seg-card__bg" aria-hidden="true"><use href="#i-car"/></svg></div>
-                            <div class="seg-card__body">
-                                <span class="seg-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-car"/></svg></span>
-                                <div><h3>Auto</h3><p>Seu veículo protegido em todos os caminhos.</p></div>
-                                <svg class="icon seg-card__arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
-                            </div>
+                            <span class="seg-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-car"/></svg></span>
+                            <div class="seg-card__text"><h3>Auto</h3><p>Seu veículo protegido em todos os caminhos.</p></div>
+                            <span class="seg-card__arrow"><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span>
                         </a>
                         <a class="seg-card" href="#servicos" style="--photo:url(img/seguros/residencial.jpg)">
-                            <div class="seg-card__media"><svg class="icon seg-card__bg" aria-hidden="true"><use href="#i-house"/></svg></div>
-                            <div class="seg-card__body">
-                                <span class="seg-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-house"/></svg></span>
-                                <div><h3>Residencial</h3><p>Mais segurança para o seu lar.</p></div>
-                                <svg class="icon seg-card__arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
-                            </div>
+                            <span class="seg-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-house"/></svg></span>
+                            <div class="seg-card__text"><h3>Residencial</h3><p>Mais segurança para o seu lar.</p></div>
+                            <span class="seg-card__arrow"><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span>
                         </a>
                         <a class="seg-card" href="#servicos" style="--photo:url(img/seguros/vida.jpg)">
-                            <div class="seg-card__media"><svg class="icon seg-card__bg" aria-hidden="true"><use href="#i-users"/></svg></div>
-                            <div class="seg-card__body">
-                                <span class="seg-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-users"/></svg></span>
-                                <div><h3>Vida</h3><p>Cuidado com quem você ama.</p></div>
-                                <svg class="icon seg-card__arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
-                            </div>
+                            <span class="seg-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-users"/></svg></span>
+                            <div class="seg-card__text"><h3>Vida</h3><p>Cuidado com quem você ama.</p></div>
+                            <span class="seg-card__arrow"><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span>
                         </a>
                         <a class="seg-card" href="#servicos" style="--photo:url(img/seguros/saude.jpg)">
-                            <div class="seg-card__media"><svg class="icon seg-card__bg" aria-hidden="true"><use href="#i-heart-pulse"/></svg></div>
-                            <div class="seg-card__body">
-                                <span class="seg-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-heart-pulse"/></svg></span>
-                                <div><h3>Saúde</h3><p>Seu bem-estar em primeiro lugar.</p></div>
-                                <svg class="icon seg-card__arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
-                            </div>
+                            <span class="seg-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-heart-pulse"/></svg></span>
+                            <div class="seg-card__text"><h3>Saúde</h3><p>Seu bem-estar em primeiro lugar.</p></div>
+                            <span class="seg-card__arrow"><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span>
                         </a>
                         <a class="seg-card" href="#servicos" style="--photo:url(img/seguros/empresarial.jpg)">
-                            <div class="seg-card__media"><svg class="icon seg-card__bg" aria-hidden="true"><use href="#i-building"/></svg></div>
-                            <div class="seg-card__body">
-                                <span class="seg-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-building"/></svg></span>
-                                <div><h3>Empresarial</h3><p>Proteção para o seu negócio crescer.</p></div>
-                                <svg class="icon seg-card__arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
-                            </div>
+                            <span class="seg-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-briefcase"/></svg></span>
+                            <div class="seg-card__text"><h3>Empresarial</h3><p>Proteção para o seu negócio crescer.</p></div>
+                            <span class="seg-card__arrow"><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span>
                         </a>
                         <a class="seg-card" href="#servicos" style="--photo:url(img/seguros/rural.jpg)">
-                            <div class="seg-card__media"><svg class="icon seg-card__bg" aria-hidden="true"><use href="#i-sprout"/></svg></div>
-                            <div class="seg-card__body">
-                                <span class="seg-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-sprout"/></svg></span>
-                                <div><h3>Rural</h3><p>O campo também precisa de proteção.</p></div>
-                                <svg class="icon seg-card__arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
+                            <span class="seg-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-sprout"/></svg></span>
+                            <div class="seg-card__text"><h3>Rural</h3><p>O campo também precisa de proteção.</p></div>
+                            <span class="seg-card__arrow"><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+                        </a>
+                        <a class="seg-card" href="#servicos" style="--photo:url(img/seguros/consorcio.jpg)">
+                            <span class="seg-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-key"/></svg></span>
+                            <div class="seg-card__text"><h3>Consórcio</h3><p>Planeje o seu futuro com inteligência.</p></div>
+                            <span class="seg-card__arrow"><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+                        </a>
+                        <a class="seg-card" href="#servicos" style="--photo:url(img/seguros/previdencia.jpg)">
+                            <span class="seg-card__icon"><svg class="icon" aria-hidden="true"><use href="#i-trending"/></svg></span>
+                            <div class="seg-card__text"><h3>Previdência Privada</h3><p>Construa hoje o futuro que você deseja.</p></div>
+                            <span class="seg-card__arrow"><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+                        </a>
+                        <a class="seg-card seg-card--outros" href="#servicos" style="--photo:url(img/seguros/outros-ramos.jpg)">
+                            <svg class="icon seg-card__shield" aria-hidden="true"><use href="#i-shield-plus"/></svg>
+                            <div class="seg-card__text">
+                                <span class="seg-card__eyebrow">Outros ramos</span>
+                                <p>Temos também diversas outras opções de seguros para atender necessidades específicas.</p>
                             </div>
+                            <span class="seg-card__btn">Ver todos os ramos <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span>
                         </a>
                     </div>
                 </div>
