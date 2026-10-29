@@ -862,6 +862,49 @@ body:not([data-page='home']) .navbar {
     color: var(--muted);
 }
 
+/* Cards com foto: Vida, Residencial, Auto, Empresarial, Rural e Saúde */
+.service-card--photo {
+    padding: 0;
+    overflow: hidden;
+}
+
+.service-card--photo .service-media {
+    position: relative;
+    height: 170px;
+    background-color: #17110c;
+    background-image: var(--photo, none), linear-gradient(135deg, #241b13, #120f0b);
+    background-size: cover;
+    background-position: center;
+}
+
+.service-card--photo .service-media::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(0deg, var(--bg-3) 0%, rgba(23, 19, 16, 0) 50%);
+}
+
+.service-card--photo .service-body {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: 0 1.8rem 1.7rem;
+}
+
+.service-card--photo .service-icon {
+    margin-top: -32px;
+    background: var(--bg-3);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
+}
+
+@media (max-width: 500px) {
+    .service-card--photo .service-media {
+        height: 140px;
+    }
+}
+
 /* Último card ("Entre Outros Ramos"): faixa larga para não ficar sozinho na grade */
 .service-card--wide {
     grid-column: 1 / -1;
