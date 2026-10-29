@@ -477,6 +477,7 @@ body:not([data-page='home']) .navbar {
    -------------------------------------------------------------------------- */
 
 .home-seguros {
+    scroll-margin-top: calc(var(--nav-h) - 40px);
     padding: 88px 0;
     background: var(--bg-2);
     border-top: 1px solid var(--line);
@@ -816,7 +817,6 @@ body:not([data-page='home']) .navbar {
    -------------------------------------------------------------------------- */
 
 .about-section,
-.services-section,
 .faq-section,
 .contato-section {
     padding: calc(var(--nav-h) + 64px) 0 88px;
@@ -979,186 +979,6 @@ body:not([data-page='home']) .navbar {
 
 .info-value a:hover {
     color: var(--gold-soft);
-}
-
-/* --------------------------------------------------------------------------
-   SERVIÇOS
-   -------------------------------------------------------------------------- */
-
-.services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(min(290px, 100%), 1fr));
-    gap: 1.4rem;
-}
-
-.service-card {
-    display: flex;
-    flex-direction: column;
-    padding: 2rem 1.8rem 1.7rem;
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    background:
-        radial-gradient(120% 90% at 100% 0%, rgba(201, 164, 106, 0.09), transparent 60%),
-        var(--bg-3);
-    transition: transform 0.4s var(--ease), border-color 0.3s, box-shadow 0.4s;
-}
-
-.service-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--line-strong);
-    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
-}
-
-.service-icon {
-    display: grid;
-    place-items: center;
-    width: 56px;
-    height: 56px;
-    margin-bottom: 1.4rem;
-    border: 1px solid var(--line-strong);
-    border-radius: 50%;
-    color: var(--gold-soft);
-}
-
-.service-icon .icon {
-    width: 26px;
-    height: 26px;
-}
-
-.service-card h3 {
-    margin-bottom: 0.7rem;
-    font-family: var(--font-serif);
-    font-size: 1.3rem;
-    line-height: 1.25;
-}
-
-.service-card p {
-    flex: 1;
-    font-size: 0.88rem;
-    font-weight: 300;
-    color: var(--muted);
-}
-
-/* Cards com foto: Vida, Residencial, Auto, Empresarial, Rural e Saúde */
-.service-card--photo {
-    padding: 0;
-    overflow: hidden;
-}
-
-.service-card--photo .service-media {
-    position: relative;
-    height: 170px;
-    background-color: #17110c;
-    background-image: var(--photo, none), linear-gradient(135deg, #241b13, #120f0b);
-    background-size: cover;
-    background-position: center;
-}
-
-.service-card--photo .service-media::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(0deg, var(--bg-3) 0%, rgba(23, 19, 16, 0) 50%);
-}
-
-.service-card--photo .service-body {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    padding: 0 1.8rem 1.7rem;
-}
-
-.service-card--photo .service-icon {
-    margin-top: -32px;
-    background: var(--bg-3);
-    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
-}
-
-@media (max-width: 500px) {
-    .service-card--photo .service-media {
-        height: 140px;
-    }
-}
-
-/* Último card ("Entre Outros Ramos"): faixa larga para não ficar sozinho na grade */
-.service-card--wide {
-    grid-column: 1 / -1;
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    align-items: center;
-    column-gap: 1.8rem;
-    padding: 1.8rem 2rem;
-}
-
-.service-card--wide .service-icon,
-.service-card--wide h3 {
-    margin-bottom: 0;
-}
-
-.service-card--wide .service-icon {
-    grid-row: 1 / 3;
-}
-
-.service-card--wide p {
-    grid-column: 2;
-    margin-top: 0.4rem;
-    max-width: 640px;
-}
-
-.service-card--wide .service-link {
-    grid-column: 3;
-    grid-row: 1 / 3;
-    margin-top: 0;
-    white-space: nowrap;
-}
-
-@media (max-width: 800px) {
-    .service-card--wide {
-        display: flex;
-        padding: 2rem 1.8rem 1.7rem;
-    }
-
-    .service-card--wide .service-icon {
-        margin-bottom: 1.4rem;
-    }
-
-    .service-card--wide h3 {
-        margin-bottom: 0.7rem;
-    }
-
-    .service-card--wide .service-link {
-        margin-top: 1.4rem;
-    }
-}
-
-.service-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin-top: 1.4rem;
-    font-size: 0.78rem;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    text-decoration: none;
-    color: var(--gold);
-    transition: color 0.3s;
-}
-
-.service-link .icon {
-    width: 1rem;
-    height: 1rem;
-    transition: transform 0.3s var(--ease);
-}
-
-.service-link:hover {
-    color: var(--gold-soft);
-}
-
-.service-link:hover .icon {
-    transform: translateX(4px);
 }
 
 /* --------------------------------------------------------------------------
@@ -1586,7 +1406,6 @@ body:not([data-page='home']) .navbar {
 
 @media (max-width: 600px) {
     .about-section,
-    .services-section,
     .faq-section,
     .contato-section {
         padding: calc(var(--nav-h) + 40px) 0 64px;

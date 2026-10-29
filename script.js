@@ -27,24 +27,37 @@ document.addEventListener('DOMContentLoaded', function () {
         menuButton.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
     }
 
-    // Qualquer link interno (#home, #sobre, #servicos, #contato) troca de página
+    // Leva ao destino do link: uma página (#sobre) ou uma seção dentro dela (#seguros, na home)
+    function goTo(id, smooth) {
+        if (findPage(id)) {
+            showPage(id);
+            return true;
+        }
+        const section = id && document.getElementById(id);
+        const host = section && section.closest('.page');
+        if (!host) return false;
+        showPage(host.id);
+        section.scrollIntoView({ behavior: smooth ? 'smooth' : 'instant' });
+        return true;
+    }
+
     document.addEventListener('click', function (e) {
         const link = e.target.closest('a[href^="#"]');
         if (!link) return;
 
-        const page = findPage(link.hash.slice(1));
-        if (!page) return;
+        const id = link.hash.slice(1);
+        if (!findPage(id) && !document.getElementById(id)) return;
 
         e.preventDefault();
         if (location.hash !== link.hash) {
             history.pushState(null, '', link.hash);
         }
-        showPage(page.id);
+        goTo(id, true);
         setMenu(false);
     });
 
     window.addEventListener('popstate', function () {
-        showPage(location.hash.slice(1));
+        if (!goTo(location.hash.slice(1))) showPage('home');
     });
 
     menuButton.addEventListener('click', function () {
@@ -57,10 +70,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     initContactForm();
 
-    showPage(location.hash.slice(1));
+    if (!goTo(location.hash.slice(1))) showPage('home');
 
-    // Ao abrir direto em #sobre, #servicos ou #contato o navegador rola até a seção
-    // depois do DOMContentLoaded; volta ao topo para o cabeçalho da página aparecer.
+    // Ao abrir direto em #sobre ou #contato o navegador rola até a seção depois do
+    // DOMContentLoaded; volta ao topo para o cabeçalho da página aparecer.
     window.addEventListener('load', function () {
         if (findPage(location.hash.slice(1))) {
             window.scrollTo({ top: 0, behavior: 'instant' });
