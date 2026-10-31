@@ -70,6 +70,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     initContactForm();
     initLightbox();
+    initFaq();
 
     if (!goTo(location.hash.slice(1))) showPage('home');
 
@@ -188,5 +189,89 @@ function initLightbox() {
         var dx = e.changedTouches[0].clientX - touchX;
         touchX = null;
         if (Math.abs(dx) > 50) show(current + (dx < 0 ? 1 : -1));
+    });
+}
+
+// Dúvidas: filtro por categoria + busca por texto (sem acento, tolerante a plural/conjugação)
+function initFaq() {
+    var list = document.getElementById('faq-list');
+    var form = document.getElementById('faq-search');
+    if (!list || !form) return;
+
+    var input = document.getElementById('faq-query');
+    var empty = document.getElementById('faq-empty');
+    var chips = Array.prototype.slice.call(document.querySelectorAll('.faq-chip'));
+    var items = Array.prototype.slice.call(list.querySelectorAll('.faq-item'));
+    var STOP = ['de', 'da', 'do', 'das', 'dos', 'em', 'um', 'uma', 'uns', 'umas', 'para', 'pra', 'por', 'com',
+        'como', 'que', 'qual', 'quais', 'meu', 'minha', 'seu', 'sua', 'no', 'na', 'nos', 'nas', 'se', 'eu',
+        'voce', 'voces', 'posso', 'ao', 'aos', 'ou', 'e', 'o', 'a', 'os', 'as', 'me', 'te', 'tem',
+        'fazer', 'faco', 'faz', 'ter', 'ser', 'sobre', 'quero', 'gostaria'];
+    var category = 'todas';
+
+    if (window.matchMedia('(max-width: 600px)').matches) {
+        input.placeholder = 'Digite sua dúvida...';
+    }
+
+    function normalize(text) {
+        return text.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+    }
+
+    items.forEach(function (item) {
+        item.dataset.text = normalize(item.textContent);
+        item.dataset.question = normalize(item.querySelector('summary').textContent);
+    });
+
+    function countHits(text, words) {
+        return words.filter(function (w) { return text.indexOf(w) !== -1; }).length;
+    }
+
+    function terms() {
+        return normalize(input.value).split(/[^a-z0-9]+/).filter(function (w) {
+            return w.length > 1 && STOP.indexOf(w) === -1;
+        }).map(function (w) {
+            return w.length >= 5 ? w.slice(0, 4) : w;
+        });
+    }
+
+    // Se alguma dúvida tem todos os termos, mostra só essas; senão, as que têm pelo menos metade.
+    function apply() {
+        var words = terms();
+        var pool = items.filter(function (item) {
+            return category === 'todas' || item.dataset.cat === category;
+        });
+        var best = Math.max.apply(null, pool.map(function (item) {
+            return countHits(item.dataset.text, words);
+        }).concat(0));
+        var needed = best === words.length ? words.length : Math.ceil(words.length / 2);
+        var visible = [];
+        items.forEach(function (item) {
+            var show = pool.indexOf(item) !== -1 && countHits(item.dataset.text, words) >= needed;
+            item.hidden = !show;
+            if (show) visible.push(item);
+        });
+        empty.hidden = visible.length > 0;
+        visible.sort(function (a, b) {
+            return countHits(b.dataset.question, words) - countHits(a.dataset.question, words);
+        });
+        return visible;
+    }
+
+    chips.forEach(function (chip) {
+        chip.addEventListener('click', function () {
+            category = chip.getAttribute('data-filter');
+            chips.forEach(function (c) { c.setAttribute('aria-pressed', String(c === chip)); });
+            apply();
+        });
+    });
+
+    input.addEventListener('input', apply);
+
+    form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var visible = apply();
+        if (visible.length && input.value.trim()) {
+            visible[0].open = true;
+            visible[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
     });
 }

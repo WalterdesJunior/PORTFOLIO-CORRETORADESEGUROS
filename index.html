@@ -37,6 +37,15 @@
         <symbol id="i-expand" viewBox="0 0 24 24"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/></symbol>
         <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></symbol>
         <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
+        <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></symbol>
+        <symbol id="i-file" viewBox="0 0 24 24"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></symbol>
+        <symbol id="i-card" viewBox="0 0 24 24"><rect width="20" height="14" x="2" y="5" rx="2"/><path d="M2 10h20"/></symbol>
+        <symbol id="i-tag" viewBox="0 0 24 24"><path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z"/><circle cx="7.5" cy="7.5" r=".5" fill="currentColor"/></symbol>
+        <symbol id="i-dots" viewBox="0 0 24 24"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></symbol>
+        <symbol id="i-headset" viewBox="0 0 24 24"><path d="M3 11h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-5Zm0 0a9 9 0 1 1 18 0m0 0v5a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3Z"/><path d="M21 16v2a4 4 0 0 1-4 4h-5"/></symbol>
+        <symbol id="i-alert" viewBox="0 0 24 24"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></symbol>
+        <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></symbol>
+        <symbol id="i-chevron-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
         <symbol id="i-briefcase" viewBox="0 0 24 24"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><rect width="20" height="14" x="2" y="6" rx="2"/></symbol>
         <symbol id="i-shield-plus" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="M9 12h6"/><path d="M12 9v6"/></symbol>
         <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
@@ -319,37 +328,137 @@
         <!-- ============ DÚVIDAS ============ -->
         <section class="page faq-section" id="duvidas">
             <div class="container">
-                <header class="page-head">
-                    <span class="eyebrow">Tire suas dúvidas</span>
-                    <h2 class="section-title">Dúvidas <em>Frequentes</em></h2>
+                <header class="faq-hero">
+                    <span class="faq-badge"><span class="faq-badge__dot" aria-hidden="true">?</span>Central de Ajuda</span>
+                    <h2>Dúvidas <em>Frequentes</em></h2>
+                    <p>Encontre rapidamente as respostas para as principais dúvidas sobre nossos serviços, seguros e processos.</p>
                 </header>
-                <div class="faq-list">
-                    <details class="faq-item">
-                        <summary>O que faz uma corretora de seguros?</summary>
+
+                <form class="faq-search" id="faq-search" role="search">
+                    <svg class="icon faq-search__icon" aria-hidden="true"><use href="#i-search"/></svg>
+                    <input type="search" id="faq-query" placeholder="Digite sua dúvida aqui... (ex: como fazer uma cotação?)" aria-label="Buscar nas dúvidas frequentes" autocomplete="off">
+                    <button type="submit" class="btn btn--gold faq-search__btn">Buscar <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+                </form>
+
+                <div class="faq-filters" role="group" aria-label="Filtrar dúvidas por categoria">
+                    <button type="button" class="faq-chip" data-filter="todas" aria-pressed="true"><svg class="icon" aria-hidden="true"><use href="#i-grid"/></svg>Todas</button>
+                    <button type="button" class="faq-chip" data-filter="seguros" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg>Seguros</button>
+                    <button type="button" class="faq-chip" data-filter="contratacao" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg>Contratação</button>
+                    <button type="button" class="faq-chip" data-filter="pagamentos" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#i-card"/></svg>Pagamentos</button>
+                    <button type="button" class="faq-chip" data-filter="sinistro" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg>Sinistro</button>
+                    <button type="button" class="faq-chip" data-filter="outros" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#i-dots"/></svg>Outros</button>
+                </div>
+
+                <div class="faq-list" id="faq-list">
+                    <details class="faq-item" name="faq" data-cat="seguros">
+                        <summary>
+                            <span class="faq-icon"><svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg></span>
+                            <span class="faq-q">O que faz uma corretora de seguros?</span>
+                            <svg class="icon faq-chevron" aria-hidden="true"><use href="#i-chevron-down"/></svg>
+                        </summary>
                         <p>A corretora faz a ponte entre você e as seguradoras: entende o que você precisa proteger, compara opções e coberturas, ajuda na contratação e acompanha você nas renovações e em caso de sinistro.</p>
                     </details>
-                    <details class="faq-item">
-                        <summary>Contratar por meio da corretora custa mais?</summary>
+                    <details class="faq-item" name="faq" data-cat="pagamentos">
+                        <summary>
+                            <span class="faq-icon"><svg class="icon" aria-hidden="true"><use href="#i-card"/></svg></span>
+                            <span class="faq-q">Contratar por meio da corretora custa mais?</span>
+                            <svg class="icon faq-chevron" aria-hidden="true"><use href="#i-chevron-down"/></svg>
+                        </summary>
                         <p>Em geral, não. A comissão da corretora já faz parte do valor do seguro, então você conta com atendimento especializado sem pagar uma taxa de serviço à parte.</p>
                     </details>
-                    <details class="faq-item">
-                        <summary>Como faço para pedir uma cotação?</summary>
+                    <details class="faq-item" name="faq" data-cat="contratacao">
+                        <summary>
+                            <span class="faq-icon"><svg class="icon" aria-hidden="true"><use href="#i-tag"/></svg></span>
+                            <span class="faq-q">Como faço para pedir uma cotação?</span>
+                            <svg class="icon faq-chevron" aria-hidden="true"><use href="#i-chevron-down"/></svg>
+                        </summary>
                         <p>É só chamar pelo WhatsApp ou preencher o formulário da página de contato, informando o tipo de seguro que deseja. Com alguns dados básicos, retornamos com as melhores opções para o seu perfil.</p>
                     </details>
-                    <details class="faq-item">
-                        <summary>Com quais seguradoras vocês trabalham?</summary>
+                    <details class="faq-item" name="faq" data-cat="seguros">
+                        <summary>
+                            <span class="faq-icon"><svg class="icon" aria-hidden="true"><use href="#i-users"/></svg></span>
+                            <span class="faq-q">Com quais seguradoras vocês trabalham?</span>
+                            <svg class="icon faq-chevron" aria-hidden="true"><use href="#i-chevron-down"/></svg>
+                        </summary>
                         <p>Trabalhamos com as principais seguradoras do mercado. Fale com a gente para saber qual delas atende melhor o seu caso.</p>
                     </details>
-                    <details class="faq-item">
-                        <summary>O que devo fazer em caso de sinistro?</summary>
+                    <details class="faq-item" name="faq" data-cat="sinistro">
+                        <summary>
+                            <span class="faq-icon"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg></span>
+                            <span class="faq-q">O que devo fazer em caso de sinistro?</span>
+                            <svg class="icon faq-chevron" aria-hidden="true"><use href="#i-chevron-down"/></svg>
+                        </summary>
                         <p>Entre em contato com a corretora o quanto antes. Nós orientamos você sobre os documentos e os próximos passos e acompanhamos o processo junto à seguradora.</p>
                     </details>
+                    <details class="faq-item" name="faq" data-cat="seguros">
+                        <summary>
+                            <span class="faq-icon"><svg class="icon" aria-hidden="true"><use href="#i-grid"/></svg></span>
+                            <span class="faq-q">Quais tipos de seguro a DM oferece?</span>
+                            <svg class="icon faq-chevron" aria-hidden="true"><use href="#i-chevron-down"/></svg>
+                        </summary>
+                        <p>Seguro auto (individual e frota), residencial, de vida, plano de saúde, empresarial e rural, além de consórcio e previdência privada. Também atendemos outros ramos: é só perguntar.</p>
+                    </details>
+                    <details class="faq-item" name="faq" data-cat="contratacao">
+                        <summary>
+                            <span class="faq-icon"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg></span>
+                            <span class="faq-q">Quais documentos preciso para fazer uma cotação?</span>
+                            <svg class="icon faq-chevron" aria-hidden="true"><use href="#i-chevron-down"/></svg>
+                        </summary>
+                        <p>Depende do seguro. Em geral, pedimos alguns dados pessoais e as informações do que será protegido, como os dados do veículo ou o endereço do imóvel. Na conversa, a gente diz exatamente o que é necessário.</p>
+                    </details>
+                    <details class="faq-item" name="faq" data-cat="contratacao">
+                        <summary>
+                            <span class="faq-icon"><svg class="icon" aria-hidden="true"><use href="#i-refresh"/></svg></span>
+                            <span class="faq-q">E na hora de renovar o seguro?</span>
+                            <svg class="icon faq-chevron" aria-hidden="true"><use href="#i-chevron-down"/></svg>
+                        </summary>
+                        <p>Antes do vencimento, revisamos a sua apólice com você, verificamos se as coberturas ainda fazem sentido e buscamos as melhores condições para a renovação.</p>
+                    </details>
+                    <details class="faq-item" name="faq" data-cat="pagamentos">
+                        <summary>
+                            <span class="faq-icon"><svg class="icon" aria-hidden="true"><use href="#i-card"/></svg></span>
+                            <span class="faq-q">Como posso pagar o meu seguro?</span>
+                            <svg class="icon faq-chevron" aria-hidden="true"><use href="#i-chevron-down"/></svg>
+                        </summary>
+                        <p>As formas de pagamento e o parcelamento são definidos por cada seguradora. Em geral, há opções como boleto, cartão de crédito e débito em conta. Na cotação, mostramos as condições de cada proposta.</p>
+                    </details>
+                    <details class="faq-item" name="faq" data-cat="sinistro">
+                        <summary>
+                            <span class="faq-icon"><svg class="icon" aria-hidden="true"><use href="#i-alert"/></svg></span>
+                            <span class="faq-q">A DM me ajuda durante todo o processo do sinistro?</span>
+                            <svg class="icon faq-chevron" aria-hidden="true"><use href="#i-chevron-down"/></svg>
+                        </summary>
+                        <p>Sim. Do primeiro contato até a conclusão, a gente orienta sobre os documentos, faz a ponte com a seguradora e acompanha cada etapa para você não ficar sem resposta.</p>
+                    </details>
+                    <details class="faq-item" name="faq" data-cat="outros">
+                        <summary>
+                            <span class="faq-icon"><svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg></span>
+                            <span class="faq-q">A DM Corretora é registrada na SUSEP?</span>
+                            <svg class="icon faq-chevron" aria-hidden="true"><use href="#i-chevron-down"/></svg>
+                        </summary>
+                        <p>Sim. A DM Corretora de Seguros tem registro na SUSEP, nº 242157783. A SUSEP é o órgão do governo que fiscaliza o mercado de seguros no Brasil.</p>
+                    </details>
+                    <details class="faq-item" name="faq" data-cat="outros">
+                        <summary>
+                            <span class="faq-icon"><svg class="icon" aria-hidden="true"><use href="#i-chat"/></svg></span>
+                            <span class="faq-q">Como falo com a DM Corretora?</span>
+                            <svg class="icon faq-chevron" aria-hidden="true"><use href="#i-chevron-down"/></svg>
+                        </summary>
+                        <p>Pelo WhatsApp <a href="https://wa.me/5586999246543" target="_blank" rel="noopener">(86) 9 9924-6543</a>, pelo e-mail <a href="mailto:dmcorretoradeseg@gmail.com">dmcorretoradeseg@gmail.com</a> ou pelo formulário da página de <a href="#contato">contato</a>. Atendemos em Teresina, PI.</p>
+                    </details>
+                    <p class="faq-empty" id="faq-empty" hidden>Não encontramos nada sobre isso por aqui. <a href="https://wa.me/5586999246543?text=Ol%C3%A1!%20Tenho%20uma%20d%C3%BAvida." target="_blank" rel="noopener">Pergunte direto pelo WhatsApp</a>.</p>
                 </div>
+
                 <div class="faq-cta">
-                    <p>Não encontrou o que procurava?</p>
-                    <a href="https://wa.me/5586999246543" target="_blank" rel="noopener" class="btn btn--gold">
+                    <svg class="icon faq-cta__icon" aria-hidden="true"><use href="#i-headset"/></svg>
+                    <div class="faq-cta__text">
+                        <strong>Ainda tem dúvidas?</strong>
+                        <span>Nossa equipe está pronta para te ajudar!</span>
+                    </div>
+                    <a href="https://wa.me/5586999246543?text=Ol%C3%A1!%20Tenho%20uma%20d%C3%BAvida." target="_blank" rel="noopener" class="btn btn--gold">
                         <svg class="icon" aria-hidden="true"><use href="#i-chat"/></svg>
-                        Fale com um especialista
+                        Fale Conosco
+                        <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>
                     </a>
                 </div>
             </div>
