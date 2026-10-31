@@ -149,7 +149,7 @@ function initLightbox() {
         var alt = link.querySelector('img').alt;
         img.src = link.getAttribute('href');
         img.alt = alt;
-        caption.textContent = alt + ' · ' + (current + 1) + ' de ' + photos.length;
+        caption.textContent = link.getAttribute('data-caption') || alt;
         img.style.animation = 'none';
         void img.offsetWidth;
         img.style.animation = '';
