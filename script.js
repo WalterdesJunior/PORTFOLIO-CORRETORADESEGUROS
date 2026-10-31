@@ -69,6 +69,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }, { passive: true });
 
     initContactForm();
+    initLightbox();
 
     if (!goTo(location.hash.slice(1))) showPage('home');
 
@@ -128,5 +129,64 @@ function initContactForm() {
         var status = document.getElementById('formulario-status');
         if (status) status.hidden = false;
         form.reset();
+    });
+}
+
+// Fotos da equipe: abre ampliada num <dialog>. Sem suporte a <dialog>, o link abre a imagem direto.
+function initLightbox() {
+    var dialog = document.getElementById('lightbox');
+    var photos = Array.prototype.slice.call(document.querySelectorAll('.team-photo'));
+    if (!dialog || typeof dialog.showModal !== 'function' || !photos.length) return;
+
+    var img = dialog.querySelector('.lightbox__img');
+    var caption = dialog.querySelector('.lightbox__caption');
+    var current = 0;
+    var touchX = null;
+
+    function show(i) {
+        current = (i + photos.length) % photos.length;
+        var link = photos[current];
+        var alt = link.querySelector('img').alt;
+        img.src = link.getAttribute('href');
+        img.alt = alt;
+        caption.textContent = alt + ' · ' + (current + 1) + ' de ' + photos.length;
+        img.style.animation = 'none';
+        void img.offsetWidth;
+        img.style.animation = '';
+    }
+
+    photos.forEach(function (link, i) {
+        link.addEventListener('click', function (e) {
+            e.preventDefault();
+            show(i);
+            dialog.showModal();
+        });
+    });
+
+    dialog.addEventListener('click', function (e) {
+        var btn = e.target.closest('[data-lb]');
+        if (btn) {
+            var action = btn.getAttribute('data-lb');
+            if (action === 'close') dialog.close();
+            else show(current + (action === 'next' ? 1 : -1));
+        } else if (e.target === dialog || e.target.classList.contains('lightbox__figure')) {
+            dialog.close();
+        }
+    });
+
+    dialog.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowRight') show(current + 1);
+        if (e.key === 'ArrowLeft') show(current - 1);
+    });
+
+    dialog.addEventListener('touchstart', function (e) {
+        touchX = e.touches[0].clientX;
+    }, { passive: true });
+
+    dialog.addEventListener('touchend', function (e) {
+        if (touchX === null) return;
+        var dx = e.changedTouches[0].clientX - touchX;
+        touchX = null;
+        if (Math.abs(dx) > 50) show(current + (dx < 0 ? 1 : -1));
     });
 }
