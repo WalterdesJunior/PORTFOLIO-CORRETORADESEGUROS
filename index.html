@@ -46,6 +46,10 @@
         <symbol id="i-alert" viewBox="0 0 24 24"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></symbol>
         <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></symbol>
         <symbol id="i-chevron-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+        <symbol id="i-whatsapp" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/><path d="M9.2 8.6c.2-.5.5-.6.8-.6h.5c.2 0 .4.1.5.4l.6 1.4c.1.2 0 .5-.1.6l-.5.6c-.1.1-.1.3 0 .5.6 1 1.4 1.8 2.4 2.4.2.1.4.1.5 0l.6-.5c.2-.2.4-.2.6-.1l1.4.6c.3.1.4.3.4.5v.5c0 .3-.1.6-.6.8-.6.3-1.6.4-3-.3a8.6 8.6 0 0 1-3.8-3.8c-.7-1.4-.6-2.4-.3-3Z"/></symbol>
+        <symbol id="i-user" viewBox="0 0 24 24"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
+        <symbol id="i-subject" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M13 8H7"/><path d="M17 12H7"/></symbol>
+        <symbol id="i-send" viewBox="0 0 24 24"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/></symbol>
         <symbol id="i-briefcase" viewBox="0 0 24 24"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><rect width="20" height="14" x="2" y="6" rx="2"/></symbol>
         <symbol id="i-shield-plus" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="M9 12h6"/><path d="M12 9v6"/></symbol>
         <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
@@ -467,62 +471,87 @@
         <!-- ============ CONTATO ============ -->
         <section class="page contato-section" id="contato">
             <div class="container">
-                <header class="page-head">
+                <header class="ct-hero">
                     <span class="eyebrow">Estou à sua disposição</span>
-                    <h2 class="section-title">Entre em <em>Contato</em></h2>
-                    <p class="page-lead">Tem alguma dúvida? Fale com a gente pelo canal que preferir.</p>
+                    <h2>Entre em <em>Contato</em></h2>
+                    <p>Tem alguma dúvida? Fale com a gente pelo canal que preferir.</p>
+                    <span class="ct-rule" aria-hidden="true"></span>
                 </header>
 
-                <div class="info-icons">
-                    <a href="https://wa.me/5586999246543" target="_blank" rel="noopener" class="icon-item">
-                        <span class="contact-icon"><svg class="icon" aria-hidden="true"><use href="#i-chat"/></svg></span>
-                        <div class="contact-text">
-                            <h4>WhatsApp</h4>
-                            <p>(86) 9 9924-6543</p>
-                        </div>
+                <div class="ct-cards">
+                    <a class="ct-card" href="https://wa.me/5586999246543" target="_blank" rel="noopener">
+                        <svg class="icon ct-card__icon" aria-hidden="true"><use href="#i-whatsapp"/></svg>
+                        <span class="ct-card__text"><strong>WhatsApp</strong><span>(86) 9 9924-6543</span></span>
+                        <span class="ct-card__arrow" aria-hidden="true"><svg class="icon"><use href="#i-arrow"/></svg></span>
                     </a>
-                    <a href="https://www.google.com/maps/search/Teresina,+PI" target="_blank" rel="noopener" class="icon-item">
-                        <span class="contact-icon"><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg></span>
-                        <div class="contact-text">
-                            <h4>Localização</h4>
-                            <p>Teresina, PI</p>
-                        </div>
+                    <a class="ct-card" href="https://www.google.com/maps/search/Teresina,+PI" target="_blank" rel="noopener">
+                        <svg class="icon ct-card__icon" aria-hidden="true"><use href="#i-pin"/></svg>
+                        <span class="ct-card__text"><strong>Localização</strong><span>Teresina, PI</span></span>
+                        <span class="ct-card__arrow" aria-hidden="true"><svg class="icon"><use href="#i-arrow"/></svg></span>
                     </a>
-                    <a href="mailto:dmcorretoradeseg@gmail.com" class="icon-item">
-                        <span class="contact-icon"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg></span>
-                        <div class="contact-text">
-                            <h4>Email</h4>
-                            <p>dmcorretoradeseg@gmail.com</p>
-                        </div>
+                    <a class="ct-card" href="mailto:dmcorretoradeseg@gmail.com">
+                        <svg class="icon ct-card__icon" aria-hidden="true"><use href="#i-mail"/></svg>
+                        <span class="ct-card__text"><strong>E-mail</strong><span>dmcorretoradeseg@gmail.com</span></span>
+                        <span class="ct-card__arrow" aria-hidden="true"><svg class="icon"><use href="#i-arrow"/></svg></span>
                     </a>
-                    <a href="https://www.instagram.com/dmcorretoradeseguros_/" target="_blank" rel="noopener" class="icon-item">
-                        <span class="contact-icon"><svg class="icon" aria-hidden="true"><use href="#i-instagram"/></svg></span>
-                        <div class="contact-text">
-                            <h4>Instagram</h4>
-                            <p>@dmcorretoradedeseguros</p>
-                        </div>
+                    <a class="ct-card" href="https://www.instagram.com/dmcorretoradeseguros_/" target="_blank" rel="noopener">
+                        <svg class="icon ct-card__icon" aria-hidden="true"><use href="#i-instagram"/></svg>
+                        <span class="ct-card__text"><strong>Instagram</strong><span>@dmcorretoradeseguros_</span></span>
+                        <span class="ct-card__arrow" aria-hidden="true"><svg class="icon"><use href="#i-arrow"/></svg></span>
                     </a>
                 </div>
 
-                <div class="formulario-container">
-                    <h3 class="titulo-formulario">Envie uma mensagem</h3>
-                    <p class="descricao-formulario">Responderei o mais breve possível.</p>
+                <div class="ct-panel">
+                    <div class="ct-form">
+                        <span class="ct-rule" aria-hidden="true"></span>
+                        <h3>Envie uma <em>mensagem</em></h3>
+                        <p class="ct-sub">Responderemos o mais breve possível.</p>
 
-                    <!-- Ao enviar, o script.js abre o WhatsApp com a mensagem pronta (ação que o
-                         WhatsApp exige ser confirmada pela pessoa) e manda uma cópia por e-mail em
-                         segundo plano. O action/method abaixo são só um reforço: se o JavaScript
-                         falhar, o formulário ainda envia por e-mail normalmente. -->
-                    <form action="https://formsubmit.co/dmcorretoradeseg@gmail.com" method="POST" id="formulario-contato" class="formulario">
-                        <div class="form-row">
-                            <input type="text" name="nome" id="nome" placeholder="Seu Nome" aria-label="Seu nome" required>
-                            <input type="text" name="Contato" id="email" placeholder="Seu Contato" aria-label="Seu contato" required>
-                        </div>
-                        <input type="text" name="assunto" id="assunto" placeholder="Assunto" aria-label="Assunto" required>
-                        <textarea name="mensagem" id="mensagem" placeholder="Sua Mensagem" aria-label="Sua mensagem" required></textarea>
-                        <button type="submit" class="btn btn--gold btn-enviar">Enviar Mensagem</button>
-                        <p class="formulario-nota">Ao enviar, abrimos o WhatsApp com sua mensagem pronta — é só confirmar o envio por lá.</p>
-                        <p class="formulario-status" id="formulario-status" role="status" hidden>WhatsApp aberto numa nova aba. Também guardamos uma cópia por e-mail.</p>
-                    </form>
+                        <!-- Ao enviar, o script.js abre o WhatsApp com a mensagem pronta (ação que o
+                             WhatsApp exige ser confirmada pela pessoa) e manda uma cópia por e-mail em
+                             segundo plano. O action/method abaixo são só um reforço: se o JavaScript
+                             falhar, o formulário ainda envia por e-mail normalmente. -->
+                        <form action="https://formsubmit.co/dmcorretoradeseg@gmail.com" method="POST" id="formulario-contato" class="formulario">
+                            <div class="form-row">
+                                <label class="ct-field">
+                                    <svg class="icon" aria-hidden="true"><use href="#i-user"/></svg>
+                                    <input type="text" name="nome" id="nome" placeholder="Seu Nome" aria-label="Seu nome" autocomplete="name" required>
+                                </label>
+                                <label class="ct-field">
+                                    <svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>
+                                    <input type="text" name="Contato" id="email" placeholder="Seu E-mail ou Telefone" aria-label="Seu e-mail ou telefone" required>
+                                </label>
+                            </div>
+                            <label class="ct-field">
+                                <svg class="icon" aria-hidden="true"><use href="#i-subject"/></svg>
+                                <input type="text" name="assunto" id="assunto" placeholder="Assunto" aria-label="Assunto" required>
+                            </label>
+                            <label class="ct-field ct-field--area">
+                                <svg class="icon" aria-hidden="true"><use href="#i-chat"/></svg>
+                                <textarea name="mensagem" id="mensagem" placeholder="Sua Mensagem..." aria-label="Sua mensagem" required></textarea>
+                            </label>
+                            <div class="ct-actions">
+                                <button type="submit" class="btn btn--gold btn-enviar">
+                                    <svg class="icon" aria-hidden="true"><use href="#i-send"/></svg>
+                                    Enviar Mensagem
+                                    <svg class="icon btn-enviar__chevron" aria-hidden="true"><use href="#i-chevron"/></svg>
+                                </button>
+                                <p class="formulario-nota">Ao enviar, abrimos o WhatsApp com sua mensagem pronta. É só confirmar o envio por lá.</p>
+                            </div>
+                            <p class="formulario-status" id="formulario-status" role="status" hidden>WhatsApp aberto numa nova aba. Também guardamos uma cópia por e-mail.</p>
+                        </form>
+                    </div>
+
+                    <aside class="ct-direct">
+                        <h3>Ou fale diretamente <em>com a gente</em></h3>
+                        <p>Estamos prontos para ajudar você a encontrar o seguro ideal.</p>
+                        <span class="ct-rule" aria-hidden="true"></span>
+                        <ul class="ct-list">
+                            <li><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg><a href="tel:+5586999246543">(86) 9 9924-6543</a></li>
+                            <li><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg><span>Teresina, PI</span></li>
+                            <li><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg><a href="mailto:dmcorretoradeseg@gmail.com">dmcorretoradeseg@gmail.com</a></li>
+                        </ul>
+                    </aside>
                 </div>
             </div>
         </section>

@@ -371,11 +371,6 @@ body:not([data-page='home']) .navbar {
     background: linear-gradient(90deg, transparent, var(--gold), transparent);
 }
 
-.page-lead {
-    margin-top: 1rem;
-    color: var(--muted);
-}
-
 /* --------------------------------------------------------------------------
    HOME · Hero (foto cobrindo toda a seção, menu transparente por cima)
    -------------------------------------------------------------------------- */
@@ -1857,167 +1852,465 @@ html:has(.lightbox[open]) {
    CONTATO
    -------------------------------------------------------------------------- */
 
-.info-icons {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1.2rem;
-    margin-bottom: 5rem;
+.page.contato-section {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    padding: calc(var(--nav-h) + 40px) 0 96px;
+    background: #030100;
 }
 
-.icon-item {
+/* Fundo: a imagem inteira no topo e, de novo, só as ondas de baixo no rodapé da seção */
+.contato-section::before,
+.contato-section::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    aspect-ratio: 1672 / 941;
+    background: url('img/contato-bg.jpg') center / cover no-repeat;
+    pointer-events: none;
+}
+
+.contato-section::before {
+    top: 0;
+    -webkit-mask-image: linear-gradient(180deg, #000 60%, transparent 90%);
+    mask-image: linear-gradient(180deg, #000 60%, transparent 90%);
+}
+
+.contato-section::after {
+    bottom: 0;
+    -webkit-mask-image: linear-gradient(0deg, #000 16%, transparent 40%);
+    mask-image: linear-gradient(0deg, #000 16%, transparent 40%);
+}
+
+.contato-section .container {
+    max-width: 1400px;
+}
+
+.ct-hero {
+    position: relative;
+    max-width: 640px;
+}
+
+.ct-hero::before {
+    content: '';
+    position: absolute;
+    inset: -40px -90px -40px -120px;
+    z-index: -1;
+    background: radial-gradient(closest-side, rgba(3, 1, 0, 0.8), rgba(3, 1, 0, 0));
+    pointer-events: none;
+}
+
+.ct-hero h2 {
+    margin: 0.9rem 0 0.9rem;
+    font-family: var(--font-serif);
+    font-size: clamp(2.6rem, 6vw, 4.4rem);
+    font-weight: 400;
+    line-height: 1.05;
+}
+
+.ct-hero h2 em,
+.ct-panel h3 em {
+    background: linear-gradient(180deg, #f6d9a2 10%, #d6a256 90%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-style: normal;
+}
+
+.ct-hero p {
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: rgba(244, 239, 232, 0.82);
+}
+
+.ct-rule {
+    display: block;
+    width: 64px;
+    height: 2px;
+    margin-top: 1.2rem;
+    background: linear-gradient(90deg, var(--gold-soft), rgba(201, 164, 106, 0));
+}
+
+.ct-cards {
+    display: grid;
+    grid-template-columns: 1fr 0.9fr 1.4fr 1.25fr;
+    gap: 1.25rem;
+    margin: 2.6rem 0 3rem;
+}
+
+.ct-card {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    padding: 2rem 1rem;
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    background: var(--bg-3);
-    text-align: center;
-    text-decoration: none;
+    gap: 0.85rem;
     min-width: 0;
+    padding: 1.3rem 1rem 1.3rem 1.2rem;
+    border: 1px solid rgba(214, 170, 98, 0.35);
+    border-radius: 14px;
+    background: linear-gradient(180deg, rgba(32, 23, 14, 0.88), rgba(12, 9, 7, 0.92));
+    box-shadow: inset 0 1px 0 rgba(255, 220, 160, 0.06), 0 12px 30px rgba(0, 0, 0, 0.4);
+    color: var(--text);
+    text-decoration: none;
     transition: transform 0.4s var(--ease), border-color 0.3s, box-shadow 0.4s;
 }
 
-.icon-item:hover {
-    transform: translateY(-5px);
-    border-color: var(--line-strong);
-    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+.ct-card:hover,
+.ct-card:focus-visible {
+    transform: translateY(-4px);
+    border-color: var(--gold);
+    box-shadow: inset 0 1px 0 rgba(255, 220, 160, 0.08), 0 0 28px rgba(201, 164, 106, 0.18);
 }
 
-.contact-icon {
+.ct-card__icon {
+    width: 40px;
+    height: 40px;
+    stroke-width: 1.35;
+    color: var(--gold);
+}
+
+.ct-card__text {
+    flex: 1;
+    min-width: 0;
+}
+
+.ct-card__text strong {
+    display: block;
+    font-size: 1.05rem;
+    font-weight: 500;
+}
+
+.ct-card__text span {
+    display: block;
+    margin-top: 0.15rem;
+    font-size: 0.78rem;
+    color: rgba(244, 239, 232, 0.78);
+    overflow-wrap: anywhere;
+}
+
+.ct-card__arrow {
     display: grid;
     place-items: center;
-    width: 60px;
-    height: 60px;
-    margin-bottom: 1.1rem;
-    border: 1px solid var(--line-strong);
+    flex: none;
+    width: 32px;
+    height: 32px;
+    border: 1px solid rgba(244, 239, 232, 0.5);
     border-radius: 50%;
-    color: var(--gold-soft);
-    transition: background-color 0.3s, color 0.3s;
+    transition: background 0.3s, border-color 0.3s, color 0.3s;
 }
 
-.contact-icon .icon {
-    width: 26px;
-    height: 26px;
+.ct-card__arrow .icon {
+    width: 16px;
+    height: 16px;
 }
 
-.icon-item:hover .contact-icon {
+.ct-card:hover .ct-card__arrow {
+    border-color: var(--gold);
     background: var(--gold);
     color: #1a130b;
 }
 
-.contact-text {
-    max-width: 100%;
+/* Painel: formulário à esquerda, contato direto à direita */
+.ct-panel {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+    overflow: hidden;
+    padding: 2rem 2.4rem 2.4rem;
+    border: 1.5px solid rgba(214, 170, 98, 0.6);
+    border-radius: 22px;
+    background: rgba(8, 6, 5, 0.84);
+    backdrop-filter: blur(6px);
+    box-shadow: 0 0 40px rgba(201, 164, 106, 0.08);
 }
 
-.icon-item h4 {
-    margin-bottom: 0.25rem;
-    font-size: 0.78rem;
-    font-weight: 500;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
+/* Globo pontilhado discreto no canto, como na referência */
+.ct-panel::after {
+    content: '';
+    position: absolute;
+    right: -140px;
+    bottom: -160px;
+    width: 460px;
+    height: 460px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(214, 170, 98, 0.45) 1px, transparent 1.6px) 0 0 / 9px 9px;
+    -webkit-mask-image: radial-gradient(circle at 35% 35%, #000 0%, rgba(0, 0, 0, 0.5) 45%, transparent 70%);
+    mask-image: radial-gradient(circle at 35% 35%, #000 0%, rgba(0, 0, 0, 0.5) 45%, transparent 70%);
+    pointer-events: none;
 }
 
-.icon-item p {
-    font-size: 0.85rem;
-    color: var(--gold-soft);
-    overflow-wrap: anywhere;
+.ct-form {
+    padding-right: 2.6rem;
+    border-right: 1px solid var(--line);
 }
 
-.formulario-container {
-    max-width: 780px;
-    margin: 0 auto;
-    padding: 2.6rem;
-    border: 1px solid var(--line);
-    border-radius: 20px;
-    background:
-        radial-gradient(90% 70% at 0% 0%, rgba(201, 164, 106, 0.08), transparent 60%),
-        var(--bg-2);
+.ct-form .ct-rule {
+    margin: 0 0 1rem;
 }
 
-.titulo-formulario {
-    text-align: center;
+.ct-panel h3 {
     font-family: var(--font-serif);
-    font-size: 1.7rem;
-    color: var(--gold-soft);
+    font-size: clamp(1.7rem, 2.6vw, 2.2rem);
+    font-weight: 400;
+    line-height: 1.2;
 }
 
-.descricao-formulario {
-    margin: 0.3rem 0 2rem;
-    text-align: center;
-    font-size: 0.9rem;
-    color: var(--muted);
+.ct-sub {
+    margin: 0.35rem 0 1.6rem;
+    font-size: 0.95rem;
+    color: rgba(244, 239, 232, 0.78);
 }
 
 .formulario {
     display: flex;
     flex-direction: column;
-    gap: 1.1rem;
+    gap: 0.75rem;
 }
 
 .form-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1.1rem;
+    gap: 0.75rem;
+}
+
+.ct-field {
+    position: relative;
+    display: block;
+}
+
+.ct-field > .icon {
+    position: absolute;
+    top: 50%;
+    left: 16px;
+    width: 20px;
+    height: 20px;
+    color: var(--gold-soft);
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+.ct-field--area > .icon {
+    top: 16px;
+    transform: none;
 }
 
 .formulario input,
 .formulario textarea {
     width: 100%;
-    padding: 0.95rem 1.1rem;
-    border: 1px solid var(--line);
+    padding: 0.9rem 1rem 0.9rem 3rem;
+    border: 1px solid rgba(244, 239, 232, 0.18);
     border-radius: 10px;
-    background: rgba(255, 255, 255, 0.03);
+    background: rgba(255, 255, 255, 0.025);
     color: var(--text);
     font-family: inherit;
-    font-size: 0.9rem;
-    transition: border-color 0.3s, background-color 0.3s;
+    font-size: 0.92rem;
+    transition: border-color 0.3s, background-color 0.3s, box-shadow 0.3s;
 }
 
 .formulario input::placeholder,
 .formulario textarea::placeholder {
-    color: rgba(244, 239, 232, 0.4);
+    color: rgba(244, 239, 232, 0.55);
 }
 
 .formulario input:focus,
 .formulario textarea:focus {
     outline: none;
     border-color: var(--gold);
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.04);
+    box-shadow: 0 0 0 3px rgba(201, 164, 106, 0.12);
 }
 
 .formulario textarea {
-    height: 150px;
+    height: 120px;
     resize: vertical;
 }
 
+.ct-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.8rem 1.4rem;
+    margin-top: 0.6rem;
+}
+
 .btn-enviar {
-    align-self: center;
-    margin-top: 0.4rem;
-    padding: 1rem 2.4rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
+    padding: 0.95rem 1.3rem 0.95rem 1.5rem;
+    font-size: 0.95rem;
+}
+
+.btn-enviar__chevron {
+    margin-left: 0.9rem;
+    opacity: 0.7;
 }
 
 .formulario-nota {
-    margin-top: -0.4rem;
-    text-align: center;
+    flex: 1;
+    min-width: 200px;
     font-size: 0.78rem;
     color: var(--muted);
 }
 
+.formulario-status[hidden] {
+    display: none;
+}
+
 .formulario-status {
-    align-self: center;
+    align-self: flex-start;
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    margin-top: -0.2rem;
     padding: 0.6rem 1rem;
     border: 1px solid var(--line-strong);
     border-radius: 999px;
     font-size: 0.82rem;
     color: var(--gold-soft);
     background: rgba(201, 164, 106, 0.08);
+}
+
+.ct-direct {
+    position: relative;
+    z-index: 1;
+    padding: 3.2rem 0 1rem 3.2rem;
+}
+
+.ct-direct h3 {
+    font-family: var(--font-sans);
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 1.3;
+}
+
+.ct-direct h3 em {
+    display: block;
+}
+
+.ct-direct p {
+    margin-top: 0.8rem;
+    font-size: 0.95rem;
+    color: rgba(244, 239, 232, 0.78);
+}
+
+.ct-direct .ct-rule {
+    margin: 1.6rem 0 1.6rem;
+}
+
+.ct-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.ct-list li {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    min-width: 0;
+    font-size: 0.95rem;
+}
+
+.ct-list .icon {
+    width: 22px;
+    height: 22px;
+    color: var(--gold);
+}
+
+.ct-list a {
+    color: var(--text);
+    text-decoration: none;
+    overflow-wrap: anywhere;
+    transition: color 0.3s;
+}
+
+.ct-list a:hover {
+    color: var(--gold-soft);
+}
+
+@media (max-width: 1100px) {
+    .ct-cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .ct-panel {
+        grid-template-columns: 1fr;
+    }
+
+    .ct-form {
+        padding-right: 0;
+        border-right: 0;
+    }
+
+    .ct-direct {
+        margin-top: 2.2rem;
+        padding: 2rem 0 0;
+        border-top: 1px solid var(--line);
+    }
+
+    .ct-panel::after {
+        opacity: 0.35;
+    }
+}
+
+@media (max-width: 600px) {
+    .page.contato-section {
+        padding: calc(var(--nav-h) + 160px) 0 72px;
+    }
+
+    /* No celular a imagem fica maior e deslocada, para o headset aparecer acima do título */
+    .contato-section::before {
+        top: 30px;
+        left: -78%;
+        width: 185%;
+    }
+
+    .contato-section::after {
+        left: auto;
+        right: 0;
+        width: 200%;
+    }
+
+    .ct-hero p {
+        font-size: 1rem;
+    }
+
+    .ct-cards {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+        margin: 2rem 0 2.2rem;
+    }
+
+    .ct-card {
+        padding: 1.1rem 1rem 1.1rem 1.2rem;
+    }
+
+    .ct-card__icon {
+        width: 38px;
+        height: 38px;
+    }
+
+    .ct-card__text span {
+        font-size: 0.76rem;
+    }
+
+    .ct-panel {
+        padding: 1.8rem 1.2rem;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .btn-enviar {
+        width: 100%;
+    }
+
+    .ct-direct h3 {
+        font-size: 1.4rem;
+    }
+
+    .ct-panel::after {
+        display: none;
+    }
 }
 
 /* --------------------------------------------------------------------------
@@ -2083,10 +2376,6 @@ html:has(.lightbox[open]) {
         grid-template-columns: 1fr;
         gap: 2rem;
         justify-items: start;
-    }
-
-    .info-icons {
-        grid-template-columns: repeat(2, 1fr);
     }
 }
 
@@ -2208,8 +2497,7 @@ html:has(.lightbox[open]) {
 
 @media (max-width: 600px) {
     .about-section,
-    .faq-section,
-    .contato-section {
+    .faq-section {
         padding: calc(var(--nav-h) + 40px) 0 64px;
     }
 
@@ -2239,18 +2527,8 @@ html:has(.lightbox[open]) {
         border-left: 0;
     }
 
-    .info-grid,
-    .form-row,
-    .info-icons {
+    .info-grid {
         grid-template-columns: 1fr;
-    }
-
-    .formulario-container {
-        padding: 1.8rem 1.2rem;
-    }
-
-    .btn-enviar {
-        width: 100%;
     }
 }
 
