@@ -152,6 +152,56 @@ h2 em {
 }
 
 /* --------------------------------------------------------------------------
+   Fundos com ondas douradas (mesma linguagem visual em todas as páginas).
+   Cada seção pode trocar a imagem (--waves-img) e a intensidade (--waves-opacity).
+   -------------------------------------------------------------------------- */
+
+.waves {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background-color: #030100;
+}
+
+.waves::before,
+.waves::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    aspect-ratio: 1672 / 941;
+    background: var(--waves-img, url('img/ondas-bg.jpg')) center / cover no-repeat;
+    opacity: var(--waves-opacity, 1);
+    pointer-events: none;
+}
+
+.waves::before {
+    top: 0;
+    -webkit-mask-image: linear-gradient(180deg, #000 60%, transparent 90%);
+    mask-image: linear-gradient(180deg, #000 60%, transparent 90%);
+}
+
+.waves::after {
+    bottom: 0;
+    -webkit-mask-image: linear-gradient(0deg, #000 16%, transparent 40%);
+    mask-image: linear-gradient(0deg, #000 16%, transparent 40%);
+}
+
+.waves--top::after,
+.waves--bottom::before {
+    display: none;
+}
+
+@media (max-width: 600px) {
+    .waves::before,
+    .waves::after {
+        left: -60%;
+        width: 220%;
+    }
+}
+
+/* --------------------------------------------------------------------------
    Navegação (transparente sobre o hero; sólida ao rolar e nas outras páginas)
    -------------------------------------------------------------------------- */
 
@@ -472,9 +522,9 @@ body:not([data-page='home']) .navbar {
    -------------------------------------------------------------------------- */
 
 .home-seguros {
+    --waves-opacity: 0.55;
     scroll-margin-top: calc(var(--nav-h) - 40px);
     padding: 88px 0;
-    background: var(--bg-2);
     border-top: 1px solid var(--line);
 }
 
@@ -741,14 +791,8 @@ body:not([data-page='home']) .navbar {
    -------------------------------------------------------------------------- */
 
 .home-why {
-    position: relative;
     padding: 84px 0 110px;
-    overflow: hidden;
     border-top: 1px solid var(--line);
-    background:
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 160' preserveAspectRatio='none'%3E%3Cpath d='M0 160V88C110 62 200 30 330 48s250 62 380 36 260-66 400-38 230 30 330 6V160Z' fill='%23070504'/%3E%3C/svg%3E") bottom / 100% 90px no-repeat,
-        radial-gradient(75% 110% at 72% 118%, rgba(214, 142, 70, 0.5), transparent 65%),
-        linear-gradient(180deg, #0f0b08 0%, #1b120b 100%);
 }
 
 .home-why__grid {
@@ -810,6 +854,16 @@ body:not([data-page='home']) .navbar {
 /* --------------------------------------------------------------------------
    SOBRE
    -------------------------------------------------------------------------- */
+
+.about-section {
+    --waves-opacity: 0.6;
+}
+
+/* As ondas de cima somem antes do texto, para não cruzar os parágrafos */
+.about-section::before {
+    -webkit-mask-image: linear-gradient(180deg, #000 28%, transparent 52%);
+    mask-image: linear-gradient(180deg, #000 28%, transparent 52%);
+}
 
 .about-section,
 .faq-section,
@@ -1445,36 +1499,8 @@ html:has(.lightbox[open]) {
    -------------------------------------------------------------------------- */
 
 .page.faq-section {
-    position: relative;
-    isolation: isolate;
-    overflow: hidden;
+    --waves-img: url('img/duvidas-bg.jpg');
     padding: calc(var(--nav-h) + 36px) 0 96px;
-    background: #040302;
-}
-
-/* Fundo: a imagem inteira no topo e, de novo, só as ondas de baixo no rodapé da seção */
-.faq-section::before,
-.faq-section::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    z-index: -1;
-    width: 100%;
-    aspect-ratio: 1672 / 941;
-    background: url('img/duvidas-bg.jpg') center / cover no-repeat;
-    pointer-events: none;
-}
-
-.faq-section::before {
-    top: 0;
-    -webkit-mask-image: linear-gradient(180deg, #000 62%, transparent 92%);
-    mask-image: linear-gradient(180deg, #000 62%, transparent 92%);
-}
-
-.faq-section::after {
-    bottom: 0;
-    -webkit-mask-image: linear-gradient(0deg, #000 18%, transparent 42%);
-    mask-image: linear-gradient(0deg, #000 18%, transparent 42%);
 }
 
 .faq-hero {
@@ -1853,36 +1879,8 @@ html:has(.lightbox[open]) {
    -------------------------------------------------------------------------- */
 
 .page.contato-section {
-    position: relative;
-    isolation: isolate;
-    overflow: hidden;
+    --waves-img: url('img/contato-bg.jpg');
     padding: calc(var(--nav-h) + 40px) 0 96px;
-    background: #030100;
-}
-
-/* Fundo: a imagem inteira no topo e, de novo, só as ondas de baixo no rodapé da seção */
-.contato-section::before,
-.contato-section::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    z-index: -1;
-    width: 100%;
-    aspect-ratio: 1672 / 941;
-    background: url('img/contato-bg.jpg') center / cover no-repeat;
-    pointer-events: none;
-}
-
-.contato-section::before {
-    top: 0;
-    -webkit-mask-image: linear-gradient(180deg, #000 60%, transparent 90%);
-    mask-image: linear-gradient(180deg, #000 60%, transparent 90%);
-}
-
-.contato-section::after {
-    bottom: 0;
-    -webkit-mask-image: linear-gradient(0deg, #000 16%, transparent 40%);
-    mask-image: linear-gradient(0deg, #000 16%, transparent 40%);
 }
 
 .contato-section .container {
