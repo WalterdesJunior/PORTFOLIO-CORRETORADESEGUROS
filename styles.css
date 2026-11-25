@@ -400,27 +400,6 @@ body:not([data-page='home']) .navbar {
     display: block;
 }
 
-.page-head {
-    text-align: center;
-    margin-bottom: 3.5rem;
-}
-
-.section-title {
-    margin-top: 0.75rem;
-    font-family: var(--font-serif);
-    font-size: clamp(2.2rem, 4vw, 3rem);
-    line-height: 1.15;
-}
-
-.section-title::after {
-    content: '';
-    display: block;
-    width: 56px;
-    height: 1px;
-    margin: 1.25rem auto 0;
-    background: linear-gradient(90deg, transparent, var(--gold), transparent);
-}
-
 /* --------------------------------------------------------------------------
    HOME · Hero (foto cobrindo toda a seção, menu transparente por cima)
    -------------------------------------------------------------------------- */
@@ -866,13 +845,14 @@ body:not([data-page='home']) .navbar {
    -------------------------------------------------------------------------- */
 
 .about-section {
-    --waves-opacity: 0.6;
+    --waves-opacity: 0.85;
 }
 
-/* As ondas de cima somem antes do texto, para não cruzar os parágrafos */
+/* As ondas de cima ficam em volta do título e somem antes dos parágrafos */
 .about-section::before {
-    -webkit-mask-image: linear-gradient(180deg, #000 28%, transparent 52%);
-    mask-image: linear-gradient(180deg, #000 28%, transparent 52%);
+    top: -90px;
+    -webkit-mask-image: linear-gradient(180deg, #000 30%, transparent 60%);
+    mask-image: linear-gradient(180deg, #000 30%, transparent 60%);
 }
 
 .about-section,
@@ -881,104 +861,433 @@ body:not([data-page='home']) .navbar {
     padding: calc(var(--nav-h) + 64px) 0 88px;
 }
 
-.about-content {
-    display: grid;
-    grid-template-columns: 1.05fr 1fr;
-    gap: 3.5rem;
-    align-items: center;
+.page.about-section {
+    padding-top: calc(var(--nav-h) + 26px);
 }
 
-.about-image {
+.about-section .container {
+    max-width: 1500px;
+}
+
+/* Topo do Sobre Nós: foto da Diele, frase, texto, contatos e botão */
+.about-hero {
     position: relative;
-    max-width: 580px;
-    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 30fr) minmax(0, 30.4fr) minmax(0, 39.6fr);
+    row-gap: 2rem;
+    align-items: start;
 }
 
-.about-image img {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 3 / 4;
-    object-fit: cover;
-    object-position: top;
-    border-radius: var(--radius);
-    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+.about-hero__head {
+    position: relative;
+    z-index: 2;
+    grid-column: 1 / -1;
+    grid-row: 1;
+    text-align: center;
 }
 
-.about-description p {
-    margin-bottom: 1.1rem;
-    font-weight: 300;
-    color: var(--muted);
-}
-
-.about-description strong {
+.about-hero__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 1.6rem;
+    font-size: clamp(0.8rem, 0.95vw, 1rem);
     font-weight: 500;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
     color: var(--gold-soft);
 }
 
-.about-highlights {
-    display: flex;
-    flex-direction: column;
-    gap: 0.65rem;
-    margin: 1.6rem 0;
+.about-hero__eyebrow::before,
+.about-hero__eyebrow::after {
+    content: '';
+    width: clamp(60px, 7vw, 118px);
+    height: 1px;
+    background: linear-gradient(90deg, rgba(214, 170, 98, 0), #d6aa62);
 }
 
-.about-highlights li {
-    display: flex;
-    align-items: center;
-    gap: 0.7rem;
-    font-size: 0.92rem;
-    color: var(--text);
+.about-hero__eyebrow::after {
+    background: linear-gradient(90deg, #d6aa62, rgba(214, 170, 98, 0));
 }
 
-.about-highlights .icon {
-    width: 18px;
-    height: 18px;
-    flex: none;
-    padding: 3px;
-    border-radius: 50%;
-    color: var(--gold);
-    background: rgba(201, 164, 106, 0.12);
+.about-hero__title {
+    margin-top: 0.4rem;
+    font-family: var(--font-serif);
+    font-size: clamp(2.5rem, 3.7vw, 3.9rem);
+    font-weight: 500;
+    line-height: 1.1;
 }
 
-.info-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1px;
-    margin: 2rem 0;
-    overflow: hidden;
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    background: var(--line);
+.about-hero__title em {
+    font-style: normal;
+    background: linear-gradient(180deg, #f6d9a2 10%, #d6a256 90%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
 }
 
-.info-item {
+.about-hero__title::after {
+    content: '';
+    display: block;
+    width: 130px;
+    height: 2px;
+    margin: 1rem auto 0;
+    background: linear-gradient(90deg, rgba(214, 170, 98, 0), #f0cd8c, rgba(214, 170, 98, 0));
+    box-shadow: 0 0 10px rgba(240, 205, 140, 0.6);
+}
+
+/* Foto: o fundo preto dela "some" (lighten) e as ondas aparecem em volta */
+.about-hero__photo {
+    position: relative;
+    grid-column: 1;
+    grid-row: 1 / 3;
+    margin-top: -22px;
+    margin-bottom: -150px;
+    margin-left: 12.6%;
+}
+
+.about-hero__photo img {
+    display: block;
+    width: 100%;
+    height: auto;
+    mix-blend-mode: lighten;
+    -webkit-mask-image: linear-gradient(180deg, #000 74%, transparent 97%);
+    mask-image: linear-gradient(180deg, #000 74%, transparent 97%);
+}
+
+/* Ondas douradas atrás do botão e da caixa de contatos, de ponta a ponta da tela */
+.about-hero::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -70px;
+    z-index: -1;
+    width: 100vw;
+    height: 420px;
+    transform: translateX(-50%);
+    background: url('img/ondas-bg.jpg') center bottom / 100vw auto no-repeat;
+    -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 55%);
+    mask-image: linear-gradient(180deg, transparent 0%, #000 55%);
+    pointer-events: none;
+}
+
+.about-hero::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -70px;
+    z-index: -1;
+    width: 100vw;
+    height: 420px;
+    transform: translateX(-50%) scaleX(-1);
+    background: url('img/ondas-bg.jpg') center bottom / 100vw auto no-repeat;
+    -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 55%);
+    mask-image: linear-gradient(180deg, transparent 0%, #000 55%);
+    pointer-events: none;
+}
+
+/* Frase em letra cursiva, inclinada, com traço dourado embaixo */
+.about-hero__quote {
+    grid-column: 2;
+    grid-row: 2;
+    margin: 0.4rem 0 0;
+    padding: 0 0.5rem;
+    transform: rotate(-9deg);
+    transform-origin: center;
+}
+
+.about-hero__quote blockquote {
+    margin: 0;
+    font-family: 'Moon Dance', cursive;
+    font-size: clamp(2.4rem, 3.95vw, 4.3rem);
+    line-height: 1.16;
+    -webkit-text-stroke: 0.5px #fff;
+    text-align: center;
+    color: #fff;
+    text-shadow: 0 2px 14px rgba(0, 0, 0, 0.6);
+}
+
+.about-hero__quote span {
+    display: block;
+    white-space: nowrap;
+}
+
+.about-hero__swoosh {
+    display: block;
+    width: 82%;
+    margin: 0.2rem 0 0 18%;
+    filter: drop-shadow(0 0 6px rgba(240, 200, 130, 0.45));
+}
+
+/* Texto da direita, com a linha dourada vertical separando da frase */
+.about-hero__text {
+    position: relative;
+    grid-column: 3;
+    grid-row: 2;
+    padding-left: clamp(1.6rem, 3vw, 2.9rem);
+    border-left: 1.5px solid rgba(214, 170, 98, 0.75);
+}
+
+.about-hero__text p {
+    margin-bottom: 1.15rem;
+    font-size: clamp(0.94rem, 1.1vw, 1.18rem);
+    line-height: 1.55;
+    color: #f1ece4;
+}
+
+.about-hero__text strong {
+    font-style: italic;
+    font-weight: 600;
+    color: #f0c56d;
+}
+
+.about-hero__list {
     display: flex;
     flex-direction: column;
     gap: 0.2rem;
-    padding: 1.1rem 1.3rem;
-    background: var(--bg-2);
+    margin-top: 1.3rem;
+}
+
+.about-hero__list li {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: clamp(0.86rem, 0.93vw, 1rem);
+    color: #fff;
+}
+
+.about-hero__ico {
+    display: grid;
+    place-items: center;
+    flex: none;
+    width: 40px;
+    height: 40px;
+    border: 1.5px solid #d6aa62;
+    border-radius: 50%;
+    color: #e5b866;
+    box-shadow: 0 0 10px rgba(214, 170, 98, 0.25);
+}
+
+.about-hero__ico .icon {
+    width: 20px;
+    height: 20px;
+    stroke-width: 1.5;
+}
+
+/* Botão por cima da parte de baixo da foto */
+.about-hero__cta {
+    position: relative;
+    z-index: 2;
+    grid-column: 1;
+    grid-row: 3;
+    align-self: center;
+    justify-self: stretch;
+    margin-top: 1.4rem;
+    margin-left: 12.6%;
+    padding: 1.15rem 1.2rem;
+    font-size: clamp(0.95rem, 1.08vw, 1.14rem);
+    white-space: nowrap;
+    box-shadow: 0 10px 30px rgba(214, 160, 80, 0.35);
+}
+
+.about-hero__cta .icon {
+    width: 1.55rem;
+    height: 1.55rem;
+}
+
+.about-hero__cta-chevron {
+    margin-left: 1rem;
+}
+
+/* Caixa com Localização, Telefone, SUSEP e E-mail */
+.about-hero__info {
+    position: relative;
+    z-index: 1;
+    grid-column: 2 / 4;
+    grid-row: 3;
+    display: grid;
+    grid-template-columns: minmax(0, 31fr) minmax(0, 26fr) minmax(0, 33fr);
+    grid-template-rows: auto auto;
+    margin-left: 10.8%;
+    border: 1.5px solid #d6aa62;
+    border-radius: 18px;
+    background: linear-gradient(180deg, rgba(22, 16, 10, 0.85), rgba(8, 6, 5, 0.9));
+    box-shadow: 0 0 26px rgba(214, 170, 98, 0.3), inset 0 0 22px rgba(214, 170, 98, 0.08);
+}
+
+.about-info {
+    display: flex;
+    align-items: center;
+    gap: clamp(0.6rem, 0.9vw, 0.9rem);
+    min-width: 0;
+    padding: 0.85rem clamp(0.8rem, 1.2vw, 1.3rem);
+}
+
+.about-info > .icon {
+    width: clamp(30px, 2.4vw, 40px);
+    height: clamp(30px, 2.4vw, 40px);
+    stroke-width: 1.35;
+    color: #e0b264;
+}
+
+.about-info > div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
     min-width: 0;
 }
 
-.info-label {
-    font-size: 0.68rem;
-    letter-spacing: 0.18em;
+.about-info--loc {
+    grid-column: 1;
+    grid-row: 1 / 3;
+    align-items: flex-start;
+    padding-top: 1.2rem;
+}
+
+.about-info--tel {
+    grid-column: 2;
+    grid-row: 1 / 3;
+    border-left: 1.5px solid rgba(214, 170, 98, 0.7);
+    border-right: 1.5px solid rgba(214, 170, 98, 0.7);
+}
+
+.about-info--tel > .icon {
+    width: clamp(26px, 2vw, 34px);
+    height: clamp(26px, 2vw, 34px);
+}
+
+.about-info--susep {
+    grid-column: 3;
+    grid-row: 1;
+}
+
+.about-info--mail {
+    grid-column: 3;
+    grid-row: 2;
+    border-top: 1.5px solid rgba(214, 170, 98, 0.7);
+}
+
+.about-info__label {
+    font-size: clamp(0.66rem, 0.78vw, 0.82rem);
+    font-weight: 600;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--gold);
+    color: #e0b264;
 }
 
-.info-value {
-    font-size: 0.92rem;
-    overflow-wrap: anywhere;
-}
-
-.info-value a {
+.about-info__value {
+    font-size: clamp(0.92rem, 1.08vw, 1.12rem);
+    color: #fff;
     text-decoration: none;
+    white-space: nowrap;
     transition: color 0.3s;
 }
 
-.info-value a:hover {
+.about-info--loc .about-info__value {
+    font-size: clamp(1rem, 1.2vw, 1.25rem);
+}
+
+.about-info--mail .about-info__value {
+    font-size: clamp(0.78rem, 0.9vw, 0.96rem);
+    white-space: normal;
+}
+
+a.about-info__value:hover {
     color: var(--gold-soft);
+}
+
+@media (max-width: 1100px) {
+    .about-hero {
+        grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+        row-gap: 2rem;
+    }
+
+    .about-hero__photo {
+        grid-column: 1;
+        grid-row: 2;
+        margin-top: 0;
+        margin-bottom: 0;
+        margin-left: 0;
+    }
+
+    .about-hero__quote {
+        grid-column: 2;
+        grid-row: 2;
+        align-self: center;
+    }
+
+    .about-hero__text {
+        grid-column: 1 / -1;
+        grid-row: 3;
+        padding-left: 0;
+        padding-top: 1.8rem;
+        border-left: 0;
+        border-top: 1.5px solid rgba(214, 170, 98, 0.75);
+    }
+
+    .about-hero__info {
+        grid-column: 1 / -1;
+        grid-row: 4;
+        margin-left: 0;
+    }
+
+    .about-hero__cta {
+        grid-column: 1 / -1;
+        grid-row: 5;
+        justify-self: center;
+        margin-bottom: 0;
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 640px) {
+    .about-hero {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .about-hero__photo {
+        grid-row: 2;
+        width: min(78%, 320px);
+        justify-self: center;
+    }
+
+    .about-hero__quote {
+        grid-column: 1;
+        grid-row: 3;
+        transform: rotate(-6deg);
+    }
+
+    .about-hero__quote blockquote {
+        font-size: clamp(2.2rem, 10vw, 2.8rem);
+    }
+
+    .about-hero__text {
+        grid-row: 4;
+    }
+
+    .about-hero__info {
+        grid-row: 5;
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .about-info--loc,
+    .about-info--tel,
+    .about-info--susep,
+    .about-info--mail {
+        grid-column: 1;
+        grid-row: auto;
+        align-items: center;
+        padding: 1rem 1.2rem;
+        border: 0;
+    }
+
+    .about-info + .about-info {
+        border-top: 1.5px solid rgba(214, 170, 98, 0.45);
+    }
+
+    .about-hero__cta {
+        grid-row: 6;
+        justify-self: stretch;
+    }
 }
 
 /* Sobre · Nossa equipe: cada foto é um "capítulo" sobre a corretora */
@@ -2496,11 +2805,6 @@ html:has(.lightbox[open]) {
         padding: 0 0 3.5rem;
     }
 
-    .about-content {
-        grid-template-columns: 1fr;
-        gap: 3.5rem;
-    }
-
     .stats {
         flex-wrap: wrap;
         row-gap: 1.5rem;
@@ -2538,10 +2842,6 @@ html:has(.lightbox[open]) {
 
     .stats li + li {
         border-left: 0;
-    }
-
-    .info-grid {
-        grid-template-columns: 1fr;
     }
 }
 
