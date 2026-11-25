@@ -883,84 +883,25 @@ body:not([data-page='home']) .navbar {
 
 .about-content {
     display: grid;
-    grid-template-columns: 0.9fr 1.1fr;
-    gap: 5rem;
+    grid-template-columns: 1.05fr 1fr;
+    gap: 3.5rem;
     align-items: center;
 }
 
 .about-image {
     position: relative;
-    max-width: 440px;
+    max-width: 580px;
     margin: 0 auto;
 }
 
 .about-image img {
     width: 100%;
     height: auto;
-    aspect-ratio: 1;
+    aspect-ratio: 3 / 4;
     object-fit: cover;
     object-position: top;
     border-radius: var(--radius);
     box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
-}
-
-.about-image::before,
-.about-image::after {
-    content: '';
-    position: absolute;
-    width: 90px;
-    height: 90px;
-    border: 1px solid var(--gold);
-    pointer-events: none;
-}
-
-.about-image::before {
-    top: -16px;
-    left: -16px;
-    border-right: 0;
-    border-bottom: 0;
-    border-top-left-radius: 8px;
-}
-
-.about-image::after {
-    right: -16px;
-    bottom: -16px;
-    border-left: 0;
-    border-top: 0;
-    border-bottom-right-radius: 8px;
-}
-
-.about-badge {
-    position: absolute;
-    left: 24px;
-    bottom: -22px;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 0.85rem 1.2rem;
-    border: 1px solid var(--line-strong);
-    border-radius: var(--radius);
-    background: var(--bg-2);
-    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.5);
-}
-
-.about-badge .icon {
-    width: 26px;
-    height: 26px;
-    color: var(--gold);
-    flex: none;
-}
-
-.about-badge strong {
-    display: block;
-    font-family: var(--font-serif);
-    font-size: 1.05rem;
-    line-height: 1.2;
-}
-
-.about-badge span {
-    font-size: 0.74rem;
-    color: var(--muted);
 }
 
 .about-description p {
