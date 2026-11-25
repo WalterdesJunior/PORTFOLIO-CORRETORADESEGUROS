@@ -1407,11 +1407,11 @@ a.about-info__value:hover {
 .story-index {
     display: block;
     font-family: var(--font-serif);
-    font-size: 3.4rem;
+    font-size: 3.6rem;
     line-height: 1;
     color: transparent;
-    -webkit-text-stroke: 1px var(--gold);
-    opacity: 0.85;
+    -webkit-text-stroke: 1.2px #e0b468;
+    filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.85)) drop-shadow(0 0 8px rgba(224, 180, 104, 0.25));
 }
 
 .story-who {
@@ -1516,8 +1516,11 @@ a.about-info__value:hover {
 .story-card .story-photo {
     aspect-ratio: 10 / 11;
     border: 0;
-    border-bottom: 1px solid var(--line);
     border-radius: 0;
+}
+
+.story-card .story-photo::after {
+    background: linear-gradient(0deg, var(--bg-2) 0%, rgba(16, 13, 11, 0.7) 14%, rgba(16, 13, 11, 0) 42%);
 }
 
 .story-photo--diele img {
@@ -1542,12 +1545,9 @@ a.about-info__value:hover {
 }
 
 .story-body .story-index {
-    margin-top: -1.9rem;
     position: relative;
     z-index: 1;
-    padding-right: 0.5rem;
-    background: var(--bg-2);
-    border-radius: 0 10px 0 0;
+    margin-top: -2.4rem;
 }
 
 .story-body h4 {
@@ -1596,8 +1596,11 @@ a.about-info__value:hover {
     .story-card .story-photo {
         aspect-ratio: auto;
         min-height: 280px;
-        border-bottom: 0;
         border-right: 1px solid var(--line);
+    }
+
+    .story-card .story-photo::after {
+        background: linear-gradient(0deg, rgba(8, 6, 5, 0.45) 0%, rgba(8, 6, 5, 0) 35%);
     }
 
     .story-card .story-photo img {
@@ -1612,8 +1615,6 @@ a.about-info__value:hover {
 
     .story-body .story-index {
         margin-top: 0;
-        padding: 0;
-        background: none;
     }
 }
 
@@ -1626,7 +1627,10 @@ a.about-info__value:hover {
         aspect-ratio: 4 / 3;
         min-height: 0;
         border-right: 0;
-        border-bottom: 1px solid var(--line);
+    }
+
+    .story-card .story-photo::after {
+        background: linear-gradient(0deg, var(--bg-2) 0%, rgba(16, 13, 11, 0.7) 14%, rgba(16, 13, 11, 0) 42%);
     }
 
     .story-body {
@@ -1634,9 +1638,7 @@ a.about-info__value:hover {
     }
 
     .story-body .story-index {
-        margin-top: -1.7rem;
-        padding-right: 0.5rem;
-        background: var(--bg-2);
+        margin-top: -2.1rem;
     }
 
     .story-index {
