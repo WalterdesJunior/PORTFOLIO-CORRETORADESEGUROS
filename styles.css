@@ -1175,7 +1175,12 @@ body:not([data-page='home']) .navbar {
     color: var(--gold-soft);
 }
 
-/* "Sobre Nós" · foto-assinatura da Diele com frase, fechando a seção da equipe */
+/* Home · foto-assinatura da Diele com frase de efeito */
+.home-quote {
+    padding: 72px 0;
+    border-top: 1px solid var(--line);
+}
+
 .quote-feature {
     max-width: 380px;
     margin: 3.5rem auto 0;
